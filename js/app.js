@@ -31,7 +31,7 @@ window.onload = function() {
 function imageLoadingDoneSoStartGame() {
     window.requestAnimationFrame(animate);
 
-    let framesPerSecond = 30;
+    let framesPerSecond = 60;
     setInterval(function() {
         drawAll();
     }, 1000 / framesPerSecond);
@@ -39,7 +39,8 @@ function imageLoadingDoneSoStartGame() {
 
 function keyPressed(evt) {
     if (evt.keyCode == 32) {
-        jump();
+        dead ? reset(): jump();
+       // jump();
     }
 }
 
@@ -49,7 +50,7 @@ function animate() {
         frame = Math.floor(counter % 1);
     }
 
-    if (highscore >= 2800) {
+    if (key1.x <= 280) {
         cheSprite.src = "image/angry.png";
     }
 
@@ -61,7 +62,7 @@ function animate() {
         frame_width,
         frame_height,
         che.x,
-        che.y + 8,
+        che.y + 13,
         frame_width / 4,
         frame_height / 4
     );
@@ -88,7 +89,7 @@ function reset() {
     endY = -500;
     alpenX = 0;
 
-    key1.x = 700;
+    key1.x = canvas.width;
     key1.y = 300;
 
     wall1.speed = 8;

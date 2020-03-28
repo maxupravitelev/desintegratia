@@ -20,6 +20,6 @@ function drawAll() {
     canvasContext.fillText("Highscore: " + highscore, canvas.width - 200, 50);
     canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width - 247, 70);
     canvasContext.font = "15px Arial";
-    canvasContext.fillText("Springen = Leertaste/Mausklick/Touch", 50, 50);
-    canvasContext.fillText("F5 = neues Spiel", 50, 70);
+    canvasContext.fillText("Jump = Space/Mouse/Touch", 50, 50);
+    canvasContext.fillText("New Game = Space/Mouse/Touch after Game Over", 50, 70);
 }

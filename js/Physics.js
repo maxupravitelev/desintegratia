@@ -1,13 +1,13 @@
 //////////////////////// walls
 
-let wallDistance = 500;
+let wallDistance = 400;
 let ground_stripeX = 0;
 let groundY = 500;
 
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
-wall2.x = wall1.x + wallDistance;
+wall2.x = wall1.x + wallDistance + Math.random() * 100;
 wall2.height = 70;
 wall2.width = 20;
 wall2.y = groundY - wall2.height;
@@ -53,7 +53,7 @@ function wallClass() {
                 ground_stripeX = 0;
             }
         } else {
-            this.x = canvas.width + 100 + Math.random() * 100;
+            this.x = canvas.width + Math.random() * 100;
             console.log(this.x);
         }
     };
@@ -94,16 +94,19 @@ function gravity() {
 let key1 = new keyClass();
 
 function keyClass() {
-    this.x = 700;
+    this.x = canvas.width;
     this.y = 300;
-    this.speed = -0.1;
+    this.speed = -0.2;
     this.goingUp = false;
 
     this.moveKey = function() {
-        if (dead == false) {
+        if (dead == false && this.x > 280) {
             this.x += this.speed;
-            this.y += Math.sin(this.x / 2) * 1;
-        }
+            this.y += Math.sin(this.x / 3) * 2;
+        } else if (dead == false && this.x <= 280) {
+            this.x += -0.03;
+            this.y += Math.sin(this.x / 0.5) * 1;
+        } 
 
         //     if (dead == false) {
         //         if (this.y >= 310) {
@@ -132,19 +135,19 @@ function keyClass() {
 }
 
 function speedUp() {
-    if (highscore >= 1000) {
-        speedFactor = 1.05;
+    if (highscore >= 800) {
+        speedFactor = 1.2;
     }
-    if (highscore >= 1800) {
-        speedFactor = 1.1;
-    }
-    if (highscore >= 1200) {
+    if (highscore >= 1500) {
         speedFactor = 1.4;
     }
-    if (highscore >= 1600) {
+    if (highscore >= 2000) {
         speedFactor = 1.6;
     }
-    if (highscore >= 2000) {
+    if (highscore >= 2500) {
         speedFactor = 1.8;
+    }
+    if (highscore >= 3000) {
+        speedFactor = 2.0;
     }
 }
