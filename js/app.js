@@ -76,6 +76,10 @@ function motherOfFunctions() {
     gravity();
     key1.moveKey();
     gameReset(); //hmmm?
+
+    if (highscore >= bestHighScore) {
+        bestHighScore = highscore;
+    }
 }
 
 function reset() {
@@ -100,6 +104,10 @@ function reset() {
 
     dead = false;
     che.jumping == false;
+
+
+
+
 }
 
 function gameReset() {
@@ -110,6 +118,9 @@ function gameReset() {
         document.addEventListener("touchstart", jump);
     }
     if (dead == true) {
+
+
+
         document.removeEventListener("mousedown", jump);
         document.addEventListener("mousedown", reset);
     }
