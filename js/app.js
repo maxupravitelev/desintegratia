@@ -84,6 +84,9 @@ function reset() {
 	endY = -500;
 	alpenX = 0;
 
+	key1.x = 700;
+	key1.y = 300;
+
 	wall1.speed = 8;
 	wall2.speed = 8;
 
