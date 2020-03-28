@@ -78,42 +78,36 @@ function motherOfFunctions() {
 	gameReset(); //hmmm?
 }
 
+function reset() {
+	highscore = 0;
+
+	endY = -500;
+	alpenX = 0;
+
+	wall1.speed = 8;
+	wall2.speed = 8;
+
+	wall1.x = 700;
+	wall1.collision();
+	wall2.x = wall1.x + wallDistance;
+
+	motherOfFunctions();
+
+	dead = false;
+	che.jumping == false;
+}
+
 function gameReset() {
 	if (dead == false) {
 		document.addEventListener("keydown", keyPressed);
 		// document.addEventListener("keyup", keyReleased);
-		document.addEventListener("mousedown", function() {
-			if (dead == false && che.jumping == false) {
-				che.y_velocity -= 40;
-				che.jumping = true;
-			}
-		});
-		document.addEventListener("touchstart", function() {
-			if (dead == false && che.jumping == false) {
-				che.y_velocity -= 40;
-				che.jumping = true;
-			}
-		});
+		document.removeEventListener("mousedown", reset);
+		document.addEventListener("mousedown", jump);
+		document.addEventListener("touchstart", jump);
 	}
 	if (dead == true) {
-		document.addEventListener("mousedown", function() {
-			highscore = 0;
-
-			endY = -500;
-			alpenX = 0;
-
-			wall1.speed = 8;
-			wall2.speed = 8;
-
-			wall1.x = 700;
-			wall1.collision();
-			wall2.x = wall1.x + wallDistance;
-
-			motherOfFunctions();
-
-			dead = false;
-			che.jumping == false;
-		});
+		document.removeEventListener("mousedown", jump);
+		document.addEventListener("mousedown", reset);
 	}
 }
 
