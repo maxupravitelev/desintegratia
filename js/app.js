@@ -105,7 +105,6 @@ function reset() {
 function gameReset() {
     if (dead == false) {
         document.addEventListener("keydown", keyPressed);
-        // document.addEventListener("keyup", keyReleased);
         document.removeEventListener("mousedown", reset);
         document.addEventListener("mousedown", jump);
         document.addEventListener("touchstart", jump);
@@ -115,7 +114,3 @@ function gameReset() {
         document.addEventListener("mousedown", reset);
     }
 }
-
-// if (highscore >= thisHighscore) { noch AUFRÄUMEN
-//     //     besthighScore = thisHighscore)
-//     // }
