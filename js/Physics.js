@@ -1,9 +1,3 @@
-
-
-
-
-
-
 //////////////////////// walls
 
 let wallDistance = 500;
@@ -13,11 +7,10 @@ let groundY = 500;
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
-    wall2.x = wall1.x + wallDistance;
-    wall2.height = 70;
-    wall2.width = 20;
-    wall2.y = groundY - wall2.height;
-
+wall2.x = wall1.x + wallDistance;
+wall2.height = 70;
+wall2.width = 20;
+wall2.y = groundY - wall2.height;
 
 let speedFactor = 1;
 
@@ -27,52 +20,46 @@ function wallClass() {
     this.width = 20;
     this.y = groundY - this.height;
     this.speed = 8;
-    
 
-this.collision = function() {
-    if ((this.x <= che.x + frame_width / 4 - 15) && che.jumping == false) {
-        if (che.x <= this.x) {
+    this.collision = function() {
+        if (this.x <= che.x + frame_width / 4 - 15 && che.jumping == false) {
+            if (che.x <= this.x) {
                 this.speed = 0;
                 highscore += 0;
                 dead = true;
-                
-                endY <= 0 ? endY +=5 : endY += 0;
-                
+
+                endY <= 0 ? (endY += 5) : (endY += 0);
+            } else {
+                if (dead == false) {
+                    this.moveWall();
+                }
+            }
         } else {
-                if(dead == false) { 
-                    this.moveWall()};
+            if (dead == false) {
+                this.moveWall();
+            }
         }
-
-    } else {
-        if(dead == false) { 
-            this.moveWall()};
-        }
-    }
-
+    };
 
     this.moveWall = function() {
+        if (this.x >= 0) {
+            this.x -= this.speed * speedFactor;
 
-        if (this.x >= 0 ) {
-            this.x -= this.speed*speedFactor;
-            
             highscore++;
-            alpenX -= 0.05*speedFactor;
-            ground_stripeX -= 2*speedFactor;
+            alpenX -= 0.05 * speedFactor;
+            ground_stripeX -= 2 * speedFactor;
             speedUp();
             if (ground_stripeX <= -80) {
                 ground_stripeX = 0;
             }
-            } else {
-                this.x = canvas.width + 100 + Math.random() * 100;
-                    console.log(this.x);
-            }
-    }
-
-
+        } else {
+            this.x = canvas.width + 100 + Math.random() * 100;
+            console.log(this.x);
+        }
+    };
 }
 
 /////////////////// object che
-
 
 che = {
     jumping: true,
@@ -82,93 +69,82 @@ che = {
     y_velocity: 0
 };
 
-
 function jump() {
-        if( dead == false && che.jumping == false) {
-            che.y_velocity -= 40;
-            che.jumping = true;
-            } 
+    if (dead == false && che.jumping == false) {
+        che.y_velocity -= 40;
+        che.jumping = true;
     }
-
+}
 
 function gravity() {
+    che.y_velocity += 2; // gravity
+    che.y += che.y_velocity;
+    che.y_velocity *= 0.9; // friction
 
-        che.y_velocity += 2;// gravity
-        che.y += che.y_velocity;
-        che.y_velocity *= 0.9;// friction
-    
-        // if che is falling below ground line
-        if (che.y > groundY - frame_height / 4) {
-             che.jumping = false;
-            che.y = groundY - frame_height / 4;
-             che.y_velocity = 0;
-        }
+    // if che is falling below ground line
+    if (che.y > groundY - frame_height / 4) {
+        che.jumping = false;
+        che.y = groundY - frame_height / 4;
+        che.y_velocity = 0;
     }
-
-
-
+}
 
 ///////////////////////// key
 
-let key1 = new keyClass;
-
+let key1 = new keyClass();
 
 function keyClass() {
+    this.x = 700;
+    this.y = 300;
+    this.speed = -0.1;
+    this.goingUp = false;
 
-this.x = 700;
-this.y = 300;
-this.speed = -0.1
-this.goingUp = false;
+    this.moveKey = function() {
+        if (dead == false) {
+            this.x += this.speed;
+            this.y += Math.sin(this.x / 2) * 1;
+        }
 
-this.moveKey = function() {
+        //     if (dead == false) {
+        //         if (this.y >= 310) {
+        //             this.goingUp = true;
+        //         }
+        //         else if (this.y <= 300) {
+        //             this.goingUp = false;
+        //         }
 
+        //         if (this.goingUp) {
+        //             this.y -= 0.2;
+        //         } else {
+        //             this.y += 0.2;
+        //         }
 
-    if (dead == false) {
-    this.x += this.speed;
-    this.y += Math.sin(this.x / 2) * 1;
-    }
-
-//     if (dead == false) { 
-//         if (this.y >= 310) {
-//             this.goingUp = true;
-//         }
-//         else if (this.y <= 300) {
-//             this.goingUp = false;
-//         }
-         
-//         if (this.goingUp) {
-//             this.y -= 0.2;
-//         } else {
-//             this.y += 0.2;
-//         }
-         
-//         if (this.x >= 260) { 
-//             this.x -= 0.2;
-//         } else {
-//             this.x += 0;
-// }
-//     } else {
-//         this.x += 0;
-//         this.y += 0;
-//     }
+        //         if (this.x >= 260) {
+        //             this.x -= 0.2;
+        //         } else {
+        //             this.x += 0;
+        // }
+        //     } else {
+        //         this.x += 0;
+        //         this.y += 0;
+        //     }
+    };
 }
-}
-
 
 function speedUp() {
-if (highscore >=1000) {
-    speedFactor = 1.05;
-}
-if (highscore >= 1800) {
-    speedFactor = 1.1;
-}
-if (highscore >= 1200) {
-    speedFactor = 1.4;
-}
-if (highscore >= 1600) {
-    speedFactor = 1.6;
-}
-if (highscore >= 2000) {
-    speedFactor = 1.8;
-}
+    if (highscore >= 1000) {
+        speedFactor = 1.05;
+    }
+    if (highscore >= 1800) {
+        speedFactor = 1.1;
+    }
+    if (highscore >= 1200) {
+        speedFactor = 1.4;
+    }
+    if (highscore >= 1600) {
+        speedFactor = 1.6;
+    }
+    if (highscore >= 2000) {
+        speedFactor = 1.8;
+    }
 }
