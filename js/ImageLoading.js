@@ -34,7 +34,7 @@ function loadImages() {
         { varName: end, theFile: "image/end.png" },
         { varName: ground, theFile: "image/ground.png" },
         { varName: ground_stripe, theFile: "image/ground_stripe.png" },
-        { varName: alpen, theFile: "image/alpen_8c.png" },
+        { varName: alpen, theFile: "image/alpen_large.png" },
         { varName: key, theFile: "image/key.png" }
     ];
 

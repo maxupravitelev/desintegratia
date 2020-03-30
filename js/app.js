@@ -12,12 +12,12 @@ let frame_height = 450;
 canvas = document.getElementById("gameCanvas");
 canvasContext = canvas.getContext("2d");
 
-window.addEventListener("resize", resizeCanvas, false);
+// window.addEventListener("resize", resizeCanvas, false);
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
+// function resizeCanvas() {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+// }
 
 window.onload = function() {
     //  resizeCanvas();
@@ -26,6 +26,7 @@ window.onload = function() {
     // canvas.width = innerWidth;
 
     loadImages();
+    
 };
 
 function imageLoadingDoneSoStartGame() {
@@ -34,6 +35,7 @@ function imageLoadingDoneSoStartGame() {
     let framesPerSecond = 60;
     setInterval(function() {
         drawAll();
+
     }, 1000 / framesPerSecond);
 }
 
@@ -50,7 +52,7 @@ function animate() {
         frame = Math.floor(counter % 1);
     }
 
-    if (key1.x <= 280) {
+    if (key1.x <= 340) {
         cheSprite.src = "image/angry.png";
     }
 
@@ -77,13 +79,20 @@ function motherOfFunctions() {
     gravity();
     key1.moveKey();
     gameReset(); //hmmm?
+    highscoreCount();
 
+
+function highscoreCount() {
     if (highscore >= bestHighScore) {
         bestHighScore = highscore;
     }
 }
+}
 
 function reset() {
+    cheSprite.src = "image/che-sprite_450x400_transparent.png";
+
+    
     highscore = 0;
 
     endY = -500;

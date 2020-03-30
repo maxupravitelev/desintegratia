@@ -1,13 +1,13 @@
 //////////////////////// walls
 
-let wallDistance = 400;
+let wallDistance = 500;
 let ground_stripeX = 0;
 let groundY = 500;
 
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
-wall2.x = wall1.x + wallDistance + Math.random() * 100;
+wall2.x = wall1.x + wallDistance;
 wall2.height = 70;
 wall2.width = 20;
 wall2.y = groundY - wall2.height;
@@ -53,7 +53,7 @@ function wallClass() {
                 ground_stripeX = 0;
             }
         } else {
-            this.x = canvas.width + Math.random() * 100;
+            this.x = canvas.width + Math.random()*100;
             console.log(this.x);
         }
     };
@@ -100,33 +100,33 @@ function keyClass() {
     this.goingUp = false;
 
     this.moveKey = function() {
-        if (dead == false && this.x > 280) {
+        if (dead == false && this.x > 340) {
             this.x += this.speed;
             this.y += Math.sin(this.x / 3) * 2;
-        } else if (dead == false && this.x <= 280) {
-            this.x += -0.03;
+        } else if (dead == false && this.x <= 340) {
+            this.x += -0.02;
             this.y += Math.sin(this.x / 0.5) * 1;
         } 
 
         //     if (dead == false) {
-        //         if (this.y >= 310) {
+        //         if (this.y >= 200) {
         //             this.goingUp = true;
         //         }
-        //         else if (this.y <= 300) {
+        //         else if (this.y <= 350) {
         //             this.goingUp = false;
         //         }
 
         //         if (this.goingUp) {
-        //             this.y -= 0.2;
+        //             this.y -= 0.5;
         //         } else {
-        //             this.y += 0.2;
+        //             this.y += 0.5;
         //         }
 
-        //         if (this.x >= 260) {
-        //             this.x -= 0.2;
-        //         } else {
-        //             this.x += 0;
-        // }
+        //         // if (this.x >= 280) {
+        //         //     this.x -= 0.5;
+        //         // } else {
+        //         //     this.x += 0;
+        // // }
         //     } else {
         //         this.x += 0;
         //         this.y += 0;
@@ -135,19 +135,22 @@ function keyClass() {
 }
 
 function speedUp() {
-    if (highscore >= 800) {
+    if (highscore >= 400) {
         speedFactor = 1.2;
     }
-    if (highscore >= 1500) {
+    if (highscore >= 800) {
         speedFactor = 1.4;
     }
-    if (highscore >= 2000) {
+    if (highscore >= 1500) {
         speedFactor = 1.6;
+    }
+    if (highscore >= 2000) {
+        speedFactor = 1.8;
     }
     if (highscore >= 2500) {
         speedFactor = 1.8;
     }
     if (highscore >= 3000) {
-        speedFactor = 2.0;
+        speedFactor = 1.8;
     }
 }
