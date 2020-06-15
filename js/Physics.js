@@ -21,7 +21,7 @@ function wallClass() {
     this.y = groundY - this.height;
     this.speed = 8;
 
-    this.collision = function() {
+    this.collision = function () {
         if (this.x <= che.x + frame_width / 4 - 15 && che.jumping == false) {
             if (che.x <= this.x) {
                 this.speed = 0;
@@ -41,7 +41,7 @@ function wallClass() {
         }
     };
 
-    this.moveWall = function() {
+    this.moveWall = function () {
         if (this.x >= 0) {
             this.x -= this.speed * speedFactor;
 
@@ -53,7 +53,7 @@ function wallClass() {
                 ground_stripeX = 0;
             }
         } else {
-            this.x = canvas.width + Math.random()*100;
+            this.x = canvas.width + Math.random() * 100;
             console.log(this.x);
         }
     };
@@ -99,14 +99,14 @@ function keyClass() {
     this.speed = -0.2;
     this.goingUp = false;
 
-    this.moveKey = function() {
+    this.moveKey = function () {
         if (dead == false && this.x > 340) {
             this.x += this.speed;
             this.y += Math.sin(this.x / 3) * 2;
         } else if (dead == false && this.x <= 340) {
             this.x += -0.02;
             this.y += Math.sin(this.x / 0.5) * 1;
-        } 
+        }
 
         //     if (dead == false) {
         //         if (this.y >= 200) {

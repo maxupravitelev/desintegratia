@@ -19,21 +19,21 @@ canvasContext = canvas.getContext("2d");
 //     canvas.height = window.innerHeight;
 // }
 
-window.onload = function() {
+window.onload = function () {
     //  resizeCanvas();
 
     // canvas.height = innerHeight;
     // canvas.width = innerWidth;
 
     loadImages();
-    
+
 };
 
 function imageLoadingDoneSoStartGame() {
     window.requestAnimationFrame(animate);
 
     let framesPerSecond = 60;
-    setInterval(function() {
+    setInterval(function () {
         drawAll();
 
     }, 1000 / framesPerSecond);
@@ -41,8 +41,8 @@ function imageLoadingDoneSoStartGame() {
 
 function keyPressed(evt) {
     if (evt.keyCode == 32) {
-        dead ? reset(): jump();
-       // jump();
+        dead ? reset() : jump();
+        // jump();
     }
 }
 
@@ -78,21 +78,20 @@ function motherOfFunctions() {
     wall2.collision();
     gravity();
     key1.moveKey();
-    gameReset(); //hmmm?
+    gameReset();
     highscoreCount();
 
 
-function highscoreCount() {
-    if (highscore >= bestHighScore) {
-        bestHighScore = highscore;
+    function highscoreCount() {
+        if (highscore >= bestHighScore) {
+            bestHighScore = highscore;
+        }
     }
-}
 }
 
 function reset() {
     cheSprite.src = "image/che-sprite_450x400_transparent.png";
 
-    
     highscore = 0;
 
     endY = -500;
@@ -114,10 +113,6 @@ function reset() {
 
     dead = false;
     che.jumping == false;
-
-
-
-
 }
 
 function gameReset() {
