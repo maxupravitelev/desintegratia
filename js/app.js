@@ -29,14 +29,27 @@ window.onload = function () {
 
 };
 
+var currentTime = 0;
+var deltaTime = 0;
+var pastTime = (new Date()).getTime();
+var framesPerSecond = 1 / 60;
+
+function gameloop() {
+    currentTime = (new Date()).getTime();
+    deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
+    while (deltaTime > framesPerSecond) {
+        deltaTime = deltaTime - framesPerSecond;
+        // insert moveAll();
+    }
+    drawAll();
+    pastTime = currentTime;
+    requestAnimationFrame(gameloop);
+}
+
+
 function imageLoadingDoneSoStartGame() {
+    requestAnimationFrame(gameloop);
     window.requestAnimationFrame(animate);
-
-    let framesPerSecond = 60;
-    setInterval(function () {
-        drawAll();
-
-    }, 1000 / framesPerSecond);
 }
 
 function keyPressed(evt) {

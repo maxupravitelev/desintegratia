@@ -54,7 +54,6 @@ function wallClass() {
             }
         } else {
             this.x = canvas.width + Math.random() * 100;
-            console.log(this.x);
         }
     };
 }
@@ -151,6 +150,6 @@ function speedUp() {
         speedFactor = 1.8;
     }
     if (highscore >= 3000) {
-        speedFactor = 1.8;
+        speedFactor = 2.0;
     }
 }
