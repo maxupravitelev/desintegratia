@@ -136,9 +136,6 @@ function gameReset() {
         document.addEventListener("touchstart", jump);
     }
     if (dead == true) {
-
-
-
         document.removeEventListener("mousedown", jump);
         document.addEventListener("mousedown", reset);
     }

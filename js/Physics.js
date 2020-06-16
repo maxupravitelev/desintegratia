@@ -46,7 +46,7 @@ function wallClass() {
             this.x -= this.speed * speedFactor;
 
             highscore++;
-            alpenX -= 0.05 * speedFactor;
+            alpenX -= 0.02 * speedFactor;
             ground_stripeX -= 2 * speedFactor;
             speedUp();
             if (ground_stripeX <= -80) {
@@ -106,32 +106,9 @@ function keyClass() {
             this.x += -0.02;
             this.y += Math.sin(this.x / 0.5) * 1;
         }
-
-        //     if (dead == false) {
-        //         if (this.y >= 200) {
-        //             this.goingUp = true;
-        //         }
-        //         else if (this.y <= 350) {
-        //             this.goingUp = false;
-        //         }
-
-        //         if (this.goingUp) {
-        //             this.y -= 0.5;
-        //         } else {
-        //             this.y += 0.5;
-        //         }
-
-        //         // if (this.x >= 280) {
-        //         //     this.x -= 0.5;
-        //         // } else {
-        //         //     this.x += 0;
-        // // }
-        //     } else {
-        //         this.x += 0;
-        //         this.y += 0;
-        //     }
     };
 }
+
 
 function speedUp() {
     if (highscore >= 400) {
