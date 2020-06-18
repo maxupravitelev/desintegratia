@@ -1,16 +1,9 @@
-let cheSprite = new Image();
+let playerSprite = new Image();
 let ground = new Image();
 let end = new Image();
 let ground_stripe = new Image();
-
-endX = 0;
-endY = -500;
-
 let alps = new Image();
-alpsX = 0;
-
 let key = new Image();
-
 let picsToLoad = 0;
 
 function countLoadedImagesAndLaunchIfReady() {
@@ -26,10 +19,9 @@ function beginLoadingImage(imgVar, fileName) {
 }
 
 function loadImages() {
-    //   let dataSet = {varName: cheSprite, theFile: "che-sprite_450x400_transparent.png"}
 
     let imageList = [
-        { varName: cheSprite, theFile: "image/che-sprite_450x400_transparent.png" },
+        { varName: playerSprite, theFile: "image/player-sprite.png" },
         { varName: end, theFile: "image/end.png" },
         { varName: ground, theFile: "image/ground.png" },
         { varName: ground_stripe, theFile: "image/ground_stripe.png" },

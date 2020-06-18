@@ -4,6 +4,11 @@ let wallDistance = 500;
 let ground_stripeX = 0;
 let groundY = 500;
 
+let endX = 0;
+let endY = -500;
+
+let alpsX = 0;
+
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
@@ -47,8 +52,8 @@ function wallClass() {
     this.speed = 8;
 
     this.collision = function () {
-        if (this.x <= che.x + frame_width / 4 - 15 && che.jumping == false) {
-            if (che.x <= this.x) {
+        if (this.x <= player.x + frame_width / 4 - 15 && player.jumping == false) {
+            if (player.x <= this.x) {
                 this.speed = 0;
                 highscore += 0;
                 dead = true;
@@ -76,9 +81,9 @@ function wallClass() {
     };
 }
 
-/////////////////// object che
+/////////////////// object player
 
-che = {
+player = {
     jumping: true,
     x: 150,
     x_velocity: 0,
@@ -87,22 +92,22 @@ che = {
 };
 
 function jump() {
-    if (dead == false && che.jumping == false) {
-        che.y_velocity -= 40;
-        che.jumping = true;
+    if (dead == false && player.jumping == false) {
+        player.y_velocity -= 40;
+        player.jumping = true;
     }
 }
 
 function gravity() {
-    che.y_velocity += 2; // gravity
-    che.y += che.y_velocity;
-    che.y_velocity *= 0.9; // friction
+    player.y_velocity += 2; // gravity
+    player.y += player.y_velocity;
+    player.y_velocity *= 0.9; // friction
 
-    // if che is falling below ground line
-    if (che.y > groundY - frame_height / 4) {
-        che.jumping = false;
-        che.y = groundY - frame_height / 4;
-        che.y_velocity = 0;
+    // if player is falling below ground line
+    if (player.y > groundY - frame_height / 4) {
+        player.jumping = false;
+        player.y = groundY - frame_height / 4;
+        player.y_velocity = 0;
     }
 }
 

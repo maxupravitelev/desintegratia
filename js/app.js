@@ -19,15 +19,11 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
 }
 
-window.onload = function () {
+window.onload = () => {
     
-    if (window.innerWidth < 700 ) {
+    if (window.innerWidth < 800 ) {
         resizeCanvas();
     }
-
-
-    // canvas.height = innerHeight;
-    // canvas.width = innerWidth;
 
     loadImages();
 
@@ -73,17 +69,17 @@ function animate() {
     }
 
     if (key1.x <= 340) {
-        cheSprite.src = "image/angry.png";
+        playerSprite.src = "image/angry.png";
     }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(
-        cheSprite,
+        playerSprite,
         frame * frame_width,
         0,
         frame_width,
         frame_height,
-        che.x,
-        che.y + 13,
+        player.x,
+        player.y + 13,
         frame_width / 4,
         frame_height / 4
     );
@@ -100,7 +96,7 @@ function highscoreCount() {
 }
 
 function reset() {
-    cheSprite.src = "image/che-sprite_450x400_transparent.png";
+    playerSprite.src = "image/player-sprite.png";
 
     highscore = 0;
 
@@ -122,7 +118,7 @@ function reset() {
     gameReset();
 
     dead = false;
-    che.jumping == false;
+    player.jumping == false;
 }
 
 function gameReset() {
