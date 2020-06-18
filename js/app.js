@@ -1,4 +1,4 @@
-let counter = 0;
+let animationCounter = 0;
 
 let highscore = 0;
 let thisHighscore = 0;
@@ -44,6 +44,8 @@ function gameloop() {
     while (deltaTime > framesPerSecond) {
         deltaTime = deltaTime - framesPerSecond;
         moveAll();
+        animationCounter = animationCounter + 0.1;
+
     }
     drawAll();
     pastTime = currentTime;
@@ -63,9 +65,11 @@ function keyPressed(evt) {
 }
 
 function animate() {
-    let frame = Math.floor(counter % 2);
+    
+    
+    let frame = Math.floor(animationCounter % 2);
     if (dead == true) {
-        frame = Math.floor(counter % 1);
+        frame = Math.floor(animationCounter % 1);
     }
 
     if (key1.x <= 340) {
@@ -83,8 +87,8 @@ function animate() {
         frame_width / 4,
         frame_height / 4
     );
-    counter = counter + 0.1;
-    window.requestAnimationFrame(animate);
+    window.requestAnimationFrame(animate);    
+    
 }
 
 
