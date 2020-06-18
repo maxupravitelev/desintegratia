@@ -4,7 +4,7 @@ function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
 }
 
 function drawAll() {
-    canvasContext.drawImage(alpen, alpenX, 0);
+    canvasContext.drawImage(alps, alpsX, 0);
     //   colorRect(0, 0, canvas.width, canvas.height, "black");
 
     canvasContext.drawImage(key, key1.x, key1.y);

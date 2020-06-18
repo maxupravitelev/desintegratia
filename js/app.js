@@ -36,10 +36,10 @@ var framesPerSecond = 1 / 60;
 
 function gameloop() {
     currentTime = (new Date()).getTime();
-    deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
+    deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
     while (deltaTime > framesPerSecond) {
         deltaTime = deltaTime - framesPerSecond;
-        // insert moveAll();
+        moveAll();
     }
     drawAll();
     pastTime = currentTime;
@@ -55,7 +55,6 @@ function imageLoadingDoneSoStartGame() {
 function keyPressed(evt) {
     if (evt.keyCode == 32) {
         dead ? reset() : jump();
-        // jump();
     }
 }
 
@@ -68,7 +67,6 @@ function animate() {
     if (key1.x <= 340) {
         cheSprite.src = "image/angry.png";
     }
-
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(
         cheSprite,
@@ -83,22 +81,13 @@ function animate() {
     );
     counter = counter + 0.1;
     window.requestAnimationFrame(animate);
-    motherOfFunctions();
 }
 
-function motherOfFunctions() {
-    wall1.collision();
-    wall2.collision();
-    gravity();
-    key1.moveKey();
-    gameReset();
-    highscoreCount();
 
 
-    function highscoreCount() {
-        if (highscore >= bestHighScore) {
-            bestHighScore = highscore;
-        }
+function highscoreCount() {
+    if (highscore >= bestHighScore) {
+        bestHighScore = highscore;
     }
 }
 
@@ -108,7 +97,7 @@ function reset() {
     highscore = 0;
 
     endY = -500;
-    alpenX = 0;
+    alpsX = 0;
 
     key1.x = canvas.width;
     key1.y = 300;
@@ -122,7 +111,7 @@ function reset() {
     wall1.collision();
     wall2.x = wall1.x + wallDistance;
 
-    motherOfFunctions();
+    gameReset();
 
     dead = false;
     che.jumping == false;

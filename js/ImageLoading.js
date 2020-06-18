@@ -6,8 +6,8 @@ let ground_stripe = new Image();
 endX = 0;
 endY = -500;
 
-let alpen = new Image();
-alpenX = 0;
+let alps = new Image();
+alpsX = 0;
 
 let key = new Image();
 
@@ -33,7 +33,7 @@ function loadImages() {
         { varName: end, theFile: "image/end.png" },
         { varName: ground, theFile: "image/ground.png" },
         { varName: ground_stripe, theFile: "image/ground_stripe.png" },
-        { varName: alpen, theFile: "image/alpen_large.png" },
+        { varName: alps, theFile: "image/alps_large.png" },
         { varName: key, theFile: "image/key.png" }
     ];
 
@@ -45,6 +45,6 @@ function loadImages() {
 
     // beginLoadingImage(end, "end.png");
     // beginLoadingImage(ground, "ground.png");
-    // beginLoadingImage(alpen, "alpen2.png");
+    // beginLoadingImage(alps, "alps2.png");
     // beginLoadingImage(key, "key.png");
 }

@@ -14,6 +14,31 @@ wall2.y = groundY - wall2.height;
 
 let speedFactor = 1;
 
+const moveAll = () => {
+    
+    if (dead == false) {
+        key1.moveKey();
+        wall1.collision();
+        wall2.collision();
+        gravity();
+        highscoreCount();               // todo: refactor placement
+        speedUp();
+        highscore++;
+        alpsX -= 0.02 * speedFactor;
+        ground_stripeX -= 2 * speedFactor;
+            if (ground_stripeX <= -80) {
+            ground_stripeX = 0;
+        }
+    } else {
+        speedFactor = 0;
+        endY <= 0 ? (endY += 5) : (endY += 0);
+    }
+
+    gameReset();
+
+
+}
+
 function wallClass() {
     this.x = 700;
     this.height = 100;
@@ -28,7 +53,7 @@ function wallClass() {
                 highscore += 0;
                 dead = true;
 
-                endY <= 0 ? (endY += 5) : (endY += 0);
+                
             } else {
                 if (dead == false) {
                     this.moveWall();
@@ -45,13 +70,6 @@ function wallClass() {
         if (this.x >= 0) {
             this.x -= this.speed * speedFactor;
 
-            highscore++;
-            alpenX -= 0.02 * speedFactor;
-            ground_stripeX -= 2 * speedFactor;
-            speedUp();
-            if (ground_stripeX <= -80) {
-                ground_stripeX = 0;
-            }
         } else {
             this.x = canvas.width + Math.random() * 100;
         }
