@@ -38,10 +38,7 @@ const moveAll = () => {
         speedFactor = 0;
         endY <= 0 ? (endY += 5) : (endY += 0);
     }
-
-    gameReset();
-
-
+    inputHandling();
 }
 
 function wallClass() {

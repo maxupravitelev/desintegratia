@@ -1,9 +1,11 @@
-function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
+const colorRect = (topLeftX, topLeftY, boxWidth, boxHeight, fillColor) => {
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }
 
-function drawAll() {
+const drawAll = () => {
+    colorRect(0, 0, canvas.width, canvas.height);
+
     canvasContext.drawImage(alps, alpsX, 0);
     //   colorRect(0, 0, canvas.width, canvas.height, "black");
 

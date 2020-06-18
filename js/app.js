@@ -34,7 +34,7 @@ var deltaTime = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond = 1 / 60;
 
-function gameloop() {
+const gameloop = () => {
     currentTime = (new Date()).getTime();
     deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
     while (deltaTime > framesPerSecond) {
@@ -49,18 +49,18 @@ function gameloop() {
 }
 
 
-function imageLoadingDoneSoStartGame() {
+const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
     window.requestAnimationFrame(animate);
 }
 
-function keyPressed(evt) {
+const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
         dead ? reset() : jump();
     }
 }
 
-function animate() {
+const animate = () => {
     
     
     let frame = Math.floor(animationCounter % 2);
@@ -87,15 +87,13 @@ function animate() {
     
 }
 
-
-
-function highscoreCount() {
+const highscoreCount = () => {
     if (highscore >= bestHighScore) {
         bestHighScore = highscore;
     }
 }
 
-function reset() {
+const reset = () => {
     playerSprite.src = "image/player-sprite.png";
 
     highscore = 0;
@@ -115,13 +113,13 @@ function reset() {
     wall1.collision();
     wall2.x = wall1.x + wallDistance;
 
-    gameReset();
+    inputHandling();
 
     dead = false;
     player.jumping == false;
 }
 
-function gameReset() {
+const inputHandling = () => {
     if (dead == false) {
         document.addEventListener("keydown", keyPressed);
         document.removeEventListener("mousedown", reset);

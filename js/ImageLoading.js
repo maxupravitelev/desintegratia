@@ -6,19 +6,19 @@ let alps = new Image();
 let key = new Image();
 let picsToLoad = 0;
 
-function countLoadedImagesAndLaunchIfReady() {
+const countLoadedImagesAndLaunchIfReady = () => {
     picsToLoad--;
     if (picsToLoad == 0) {
         imageLoadingDoneSoStartGame();
     }
 }
 
-function beginLoadingImage(imgVar, fileName) {
+const beginLoadingImage = (imgVar, fileName) => {
     imgVar.onload = countLoadedImagesAndLaunchIfReady();
     imgVar.src = fileName;
 }
 
-function loadImages() {
+const loadImages = () => {
 
     let imageList = [
         { varName: playerSprite, theFile: "image/player-sprite.png" },
@@ -35,8 +35,4 @@ function loadImages() {
         beginLoadingImage(imageList[i].varName, imageList[i].theFile);
     }
 
-    // beginLoadingImage(end, "end.png");
-    // beginLoadingImage(ground, "ground.png");
-    // beginLoadingImage(alps, "alps2.png");
-    // beginLoadingImage(key, "key.png");
 }
