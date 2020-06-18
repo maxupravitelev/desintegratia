@@ -12,15 +12,19 @@ let frame_height = 450;
 canvas = document.getElementById("gameCanvas");
 canvasContext = canvas.getContext("2d");
 
-// window.addEventListener("resize", resizeCanvas, false);
+window.addEventListener("resize", resizeCanvas, false);
 
-// function resizeCanvas() {
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-// }
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
 
 window.onload = function () {
-    //  resizeCanvas();
+    
+    if (window.innerWidth < 700 ) {
+        resizeCanvas();
+    }
+
 
     // canvas.height = innerHeight;
     // canvas.width = innerWidth;
