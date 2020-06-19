@@ -14,7 +14,7 @@ let wall2 = new wallClass();
 
 wall2.x = wall1.x + wallDistance;
 wall2.height = 70;
-wall2.width = 20;
+// wall2.width = 20;
 wall2.y = groundY - wall2.height;
 
 let speedFactor = 1;
@@ -43,7 +43,7 @@ const moveAll = () => {
 
 function wallClass() {
     this.x = 700;
-    this.height = 100;
+    this.height = 90;
     this.width = 20;
     this.y = groundY - this.height;
     this.speed = 8;
@@ -95,7 +95,7 @@ function jump() {
     }
 }
 
-function gravity() {
+const gravity = () => {
     player.y_velocity += 2; // gravity
     player.y += player.y_velocity;
     player.y_velocity *= 0.9; // friction
@@ -130,7 +130,7 @@ function keyClass() {
 }
 
 
-function speedUp() {
+const speedUp = () => {
     if (highscore >= 400) {
         speedFactor = 1.2;
     }

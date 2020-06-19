@@ -10,9 +10,12 @@ const drawAll = () => {
     //   colorRect(0, 0, canvas.width, canvas.height, "black");
 
     canvasContext.drawImage(key, key1.x, key1.y);
+    canvasContext.drawImage(wall_sprite, wall1.x, wall1.y);
+    canvasContext.drawImage(wall_sprite, wall2.x, wall2.y);
 
-    colorRect(wall1.x, wall1.y, wall1.width, wall1.height, "brown");
-    colorRect(wall2.x, wall2.y, wall2.width, wall2.height, "darkred");
+
+    // colorRect(wall1.x, wall1.y, wall1.width, wall1.height, "brown");
+    // colorRect(wall2.x, wall2.y, wall2.width, wall2.height, "darkred");
 
     // level bar
     colorRect(canvas.width - 257, 44, 226, 29, "black");

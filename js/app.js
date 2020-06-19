@@ -1,4 +1,10 @@
 let animationCounter = 0;
+let frame_width = 400;
+let frame_height = 450;
+
+let coinAnimationCounter = 0;
+let coin_frame_width = 16;
+let coin_frame_height = 16;
 
 let highscore = 0;
 let thisHighscore = 0;
@@ -6,8 +12,7 @@ let bestHighScore = 0;
 
 let dead = false;
 
-let frame_width = 400;
-let frame_height = 450;
+
 
 canvas = document.getElementById("gameCanvas");
 canvasContext = canvas.getContext("2d");
@@ -41,6 +46,7 @@ const gameloop = () => {
         deltaTime = deltaTime - framesPerSecond;
         moveAll();
         animationCounter = animationCounter + 0.1;
+        coinAnimationCounter = coinAnimationCounter + 0.2;
 
     }
     drawAll();
@@ -62,7 +68,29 @@ const keyPressed = (evt) => {
 
 const animate = () => {
     
+    // let coin_frame_width = 16;
+    // let coin_frame_height = 16;
+
+    let coin_frame = Math.floor(coinAnimationCounter % 8);
+    if (dead == true) {
+        coin_frame = Math.floor(coinAnimationCounter % 1);
+    }
+
     
+        //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+        canvasContext.drawImage(
+            coin,
+            coin_frame * coin_frame_width,
+            0,
+            coin_frame_width,
+            coin_frame_height,
+            200,
+            200,
+            coin_frame_width * 2,
+            coin_frame_height * 2
+        );
+
+
     let frame = Math.floor(animationCounter % 2);
     if (dead == true) {
         frame = Math.floor(animationCounter % 1);
