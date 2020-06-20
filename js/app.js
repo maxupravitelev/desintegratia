@@ -17,7 +17,7 @@ let dead = false;
 canvas = document.getElementById("gameCanvas");
 canvasContext = canvas.getContext("2d");
 
-window.addEventListener("resize", resizeCanvas, false);
+// window.addEventListener("resize", resizeCanvas, false);
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -27,7 +27,7 @@ function resizeCanvas() {
 window.onload = () => {
     
     if (window.innerWidth < 800 ) {
-        resizeCanvas();
+        // resizeCanvas();
     }
 
     loadImages();
@@ -79,7 +79,7 @@ const animate = () => {
     
         //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
         canvasContext.drawImage(
-            coin,
+            coin_sprite,
             coin_frame * coin_frame_width,
             0,
             coin_frame_width,
@@ -89,6 +89,8 @@ const animate = () => {
             coin_frame_width * 2,
             coin_frame_height * 2
         );
+
+        canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
 
 
     let frame = Math.floor(animationCounter % 2);

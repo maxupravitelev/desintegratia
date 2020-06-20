@@ -1,4 +1,5 @@
 //////////////////////// walls
+let speedFactor = 0.7;
 
 let wallDistance = 500;
 let ground_stripeX = 0;
@@ -12,26 +13,32 @@ let alpsX = 0;
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
+
 wall2.x = wall1.x + wallDistance;
 wall2.height = 70;
 // wall2.width = 20;
 wall2.y = groundY - wall2.height;
 
-let speedFactor = 1;
+let coin1 = new coinClass();
+coin1.x = 700;
+coin1.y = 250;
+
+
 
 const moveAll = () => {
-    
+
     if (dead == false) {
         key1.moveKey();
         wall1.collision();
         wall2.collision();
+        coin1.moveCoin();
         gravity();
         highscoreCount();               // todo: refactor placement
         speedUp();
         highscore++;
         alpsX -= 0.02 * speedFactor;
         ground_stripeX -= 2 * speedFactor;
-            if (ground_stripeX <= -80) {
+        if (ground_stripeX <= -80) {
             ground_stripeX = 0;
         }
     } else {
@@ -55,7 +62,7 @@ function wallClass() {
                 highscore += 0;
                 dead = true;
 
-                
+
             } else {
                 if (dead == false) {
                     this.moveWall();
@@ -128,6 +135,24 @@ function keyClass() {
         }
     };
 }
+
+let coin = new coinClass();
+
+function coinClass() {
+    this.x = canvas.width;
+    this.y = 300;
+    this.speed = wall1.speed;
+
+    this.moveCoin = () => {
+        if (dead == false) {
+            this.x -= this.speed;
+        } if (this.x < 0) {
+            this.x = 850;
+        } // if ((player.x == this.x) && (player.y = this.y))
+    }
+}
+
+
 
 
 const speedUp = () => {
