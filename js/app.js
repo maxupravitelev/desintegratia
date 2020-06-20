@@ -68,28 +68,12 @@ const keyPressed = (evt) => {
 
 const animate = () => {
     
-    // let coin_frame_width = 16;
-    // let coin_frame_height = 16;
-
     let coin_frame = Math.floor(coinAnimationCounter % 8);
     if (dead == true) {
         coin_frame = Math.floor(coinAnimationCounter % 1);
     }
-
     
         //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-        canvasContext.drawImage(
-            coin_sprite,
-            coin_frame * coin_frame_width,
-            0,
-            coin_frame_width,
-            coin_frame_height,
-            200,
-            200,
-            coin_frame_width * 2,
-            coin_frame_height * 2
-        );
-
         canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
 
 

@@ -118,6 +118,7 @@ const gravity = () => {
     player.y_velocity += 2; // gravity
     player.y += player.y_velocity;
     player.y_velocity *= 0.9; // friction
+    console.log(player.y)
 
     // if player is falling below ground line
     if (player.y > groundY - frame_height / 4) {
@@ -164,14 +165,29 @@ class coinClass {
                 this.x -= this.speed;
             } if (this.x < 0) {
                 this.x = 850;
-            } // if ((player.x == this.x) && (player.y = this.y))
+            } 
+                if (((player.y < (this.y + 16)) && (player.y > this.y)) 
+                && ((player.x > this.x) && (player.x < (this.x + 16)) )) 
+
+                {
+                    console.log("hit");
+                    this.x += 400;
+                }
+                
+
+        /*
+        
+        ((player.y > this.y) && (this.y < player.y + frame_height / 4))
+        
+        */
+            
         };
     }
 }
 
 let coin1 = new coinClass();
 coin1.x = 700;
-coin1.y = 250;
+coin1.y = 265;
 
 
 const speedUp = () => {
