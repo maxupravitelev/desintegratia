@@ -1,7 +1,6 @@
 //////////////////////// walls
 let speedFactor = 0.7;
 
-let wallDistance = 500;
 let ground_stripeX = 0;
 let groundY = 500;
 
@@ -10,18 +9,9 @@ let endY = -500;
 
 let alpsX = 0;
 
-let wall1 = new wallClass();
-let wall2 = new wallClass();
 
 
-wall2.x = wall1.x + wallDistance;
-wall2.height = 70;
-// wall2.width = 20;
-wall2.y = groundY - wall2.height;
 
-let coin1 = new coinClass();
-coin1.x = 700;
-coin1.y = 250;
 
 
 
@@ -48,42 +38,64 @@ const moveAll = () => {
     inputHandling();
 }
 
-function wallClass() {
-    this.x = 700;
-    this.height = 90;
-    this.width = 20;
-    this.y = groundY - this.height;
-    this.speed = 8;
-
-    this.collision = function () {
-        if (this.x <= player.x + frame_width / 4 - 15 && player.jumping == false) {
-            if (player.x <= this.x) {
-                this.speed = 0;
-                highscore += 0;
-                dead = true;
+///////////////////////// walls
 
 
-            } else {
+class wallClass {
+    constructor() {
+        this.x = 700;
+        this.height = 90;
+        this.width = 20;
+        this.y = groundY - this.height;
+        this.speed = 8;
+
+        this.collision = function () {
+            if (this.x <= player.x + frame_width / 4 - 15 && player.jumping == false) {
+                if (player.x <= this.x) {
+                    this.speed = 0;
+                    highscore += 0;
+                    dead = true;
+
+
+                }
+                else {
+                    if (dead == false) {
+                        this.moveWall();
+                    }
+                }
+            }
+            else {
                 if (dead == false) {
                     this.moveWall();
                 }
             }
-        } else {
-            if (dead == false) {
-                this.moveWall();
+        };
+
+        this.moveWall = () => {
+            if (this.x >= 0) {
+                this.x -= this.speed * speedFactor;
+
             }
-        }
-    };
-
-    this.moveWall = function () {
-        if (this.x >= 0) {
-            this.x -= this.speed * speedFactor;
-
-        } else {
-            this.x = canvas.width + Math.random() * 100;
-        }
-    };
+            else {
+                this.x = canvas.width + Math.random() * 100;
+            }
+        };
+    }
 }
+
+
+
+let wall1 = new wallClass();
+let wall2 = new wallClass();
+
+let wallDistance = 500;
+
+
+wall2.x = wall1.x + wallDistance;
+wall2.height = 70;
+// wall2.width = 20;
+wall2.y = groundY - wall2.height;
+
 
 /////////////////// object player
 
@@ -117,42 +129,49 @@ const gravity = () => {
 
 ///////////////////////// key
 
-let key1 = new keyClass();
 
-function keyClass() {
-    this.x = canvas.width;
-    this.y = 300;
-    this.speed = -0.2;
-    this.goingUp = false;
+class keyClass {
+    constructor() {
+        this.x = canvas.width;
+        this.y = 300;
+        this.speed = -0.2;
+        this.goingUp = false;
 
-    this.moveKey = function () {
-        if (dead == false && this.x > 340) {
-            this.x += this.speed;
-            this.y += Math.sin(this.x / 3) * 2;
-        } else if (dead == false && this.x <= 340) {
-            this.x += -0.02;
-            this.y += Math.sin(this.x / 0.5) * 1;
-        }
-    };
-}
-
-let coin = new coinClass();
-
-function coinClass() {
-    this.x = canvas.width;
-    this.y = 300;
-    this.speed = wall1.speed;
-
-    this.moveCoin = () => {
-        if (dead == false) {
-            this.x -= this.speed;
-        } if (this.x < 0) {
-            this.x = 850;
-        } // if ((player.x == this.x) && (player.y = this.y))
+        this.moveKey = function () {
+            if (dead == false && this.x > 340) {
+                this.x += this.speed;
+                this.y += Math.sin(this.x / 3) * 2;
+            }
+            else if (dead == false && this.x <= 340) {
+                this.x += -0.02;
+                this.y += Math.sin(this.x / 0.5) * 1;
+            }
+        };
     }
 }
 
+let key1 = new keyClass();
 
+
+class coinClass {
+    constructor() {
+        this.x = canvas.width;
+        this.y = 300;
+        this.speed = wall1.speed;
+
+        this.moveCoin = () => {
+            if (dead == false) {
+                this.x -= this.speed;
+            } if (this.x < 0) {
+                this.x = 850;
+            } // if ((player.x == this.x) && (player.y = this.y))
+        };
+    }
+}
+
+let coin1 = new coinClass();
+coin1.x = 700;
+coin1.y = 250;
 
 
 const speedUp = () => {
