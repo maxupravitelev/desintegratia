@@ -75,6 +75,8 @@ const animate = () => {
     
         //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
         canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
+        canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin2.x, coin2.y, coin_frame_width * 2, coin_frame_height * 2);
+        canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin3.x, coin3.y, coin_frame_width * 2, coin_frame_height * 2);
 
 
     let frame = Math.floor(animationCounter % 2);
@@ -82,9 +84,9 @@ const animate = () => {
         frame = Math.floor(animationCounter % 1);
     }
 
-    if (key1.x <= 340) {
-        playerSprite.src = "image/angry.png";
-    }
+    // if (key1.x <= 340) {
+    //     playerSprite.src = "image/angry.png";
+    // }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(
         playerSprite,

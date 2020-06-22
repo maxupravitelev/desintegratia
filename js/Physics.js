@@ -1,5 +1,5 @@
 //////////////////////// walls
-let speedFactor = 0.7;
+let speedFactor = 0.2;
 
 let ground_stripeX = 0;
 let groundY = 500;
@@ -19,12 +19,15 @@ const moveAll = () => {
 
     if (dead == false) {
         key1.moveKey();
-        wall1.collision();
-        wall2.collision();
+        // wall1.collision();
+        // wall2.collision();
         coin1.moveCoin();
+        coin2.moveCoin();
+        coin3.moveCoin();
+
         gravity();
         highscoreCount();               // todo: refactor placement
-        speedUp();
+        // speedUp();
         highscore++;
         alpsX -= 0.02 * speedFactor;
         ground_stripeX -= 2 * speedFactor;
@@ -36,6 +39,9 @@ const moveAll = () => {
         endY <= 0 ? (endY += 5) : (endY += 0);
     }
     inputHandling();
+    console.log("c " + coin1.y);
+    // console.log("p " + player.x);
+
 }
 
 ///////////////////////// walls
@@ -118,7 +124,8 @@ const gravity = () => {
     player.y_velocity += 2; // gravity
     player.y += player.y_velocity;
     player.y_velocity *= 0.9; // friction
-    console.log(player.y)
+    // console.log("playerY:" + player.y)
+    // console.log("CoinX:" + coin1.x)
 
     // if player is falling below ground line
     if (player.y > groundY - frame_height / 4) {
@@ -166,20 +173,18 @@ class coinClass {
             } if (this.x < 0) {
                 this.x = 850;
             } 
-                if (((player.y < (this.y + 16)) && (player.y > this.y)) 
-                && ((player.x > this.x) && (player.x < (this.x + 16)) )) 
+                // if (((player.y < (this.y + 16)) && (player.y > this.y)) 
+                // && ((player.x > this.x) && (player.x < (this.x + 16)))) 
+                // if (player.x > this.x && player.x < this.x + 16 && player.y > this.y && player.y < this.y+16)
 
+                if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true))      // hotfix
+                // if (player.y > this.y && player.y < this.y + 16)
                 {
                     console.log("hit");
-                    this.x += 400;
+                    this.x += 900;
                 }
                 
 
-        /*
-        
-        ((player.y > this.y) && (this.y < player.y + frame_height / 4))
-        
-        */
             
         };
     }
@@ -187,7 +192,15 @@ class coinClass {
 
 let coin1 = new coinClass();
 coin1.x = 700;
-coin1.y = 265;
+coin1.y = 270;
+
+let coin2 = new coinClass();
+coin2.x = 1000;
+coin2.y = 280;
+
+let coin3 = new coinClass();
+coin3.x = 1300;
+coin3.y = 290;
 
 
 const speedUp = () => {
