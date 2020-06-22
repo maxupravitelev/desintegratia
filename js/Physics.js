@@ -10,24 +10,19 @@ let endY = -500;
 let alpsX = 0;
 
 
-
-
-
-
-
 const moveAll = () => {
 
     if (dead == false) {
         key1.moveKey();
-        // wall1.collision();
-        // wall2.collision();
+        wall1.collision();
+        wall2.collision();
         coin1.moveCoin();
         coin2.moveCoin();
         coin3.moveCoin();
 
         gravity();
         highscoreCount();               // todo: refactor placement
-        // speedUp();
+        speedUp();
         highscore++;
         alpsX -= 0.02 * speedFactor;
         ground_stripeX -= 2 * speedFactor;
@@ -39,8 +34,6 @@ const moveAll = () => {
         endY <= 0 ? (endY += 5) : (endY += 0);
     }
     inputHandling();
-    console.log("c " + coin1.y);
-    // console.log("p " + player.x);
 
 }
 
@@ -180,7 +173,7 @@ class coinClass {
                 if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true))      // hotfix
                 // if (player.y > this.y && player.y < this.y + 16)
                 {
-                    console.log("hit");
+                    highscore += 200;
                     this.x += 900;
                 }
                 
