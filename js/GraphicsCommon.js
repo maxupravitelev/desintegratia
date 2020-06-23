@@ -14,22 +14,21 @@ const drawAll = () => {
     canvasContext.drawImage(wall_sprite, wall2.x, wall2.y);
 
 
-    // colorRect(wall1.x, wall1.y, wall1.width, wall1.height, "brown");
-    // colorRect(wall2.x, wall2.y, wall2.width, wall2.height, "darkred");
-
     // level bar
-    colorRect(canvas.width - 257, 44, 226, 29, "black");
-    colorRect(canvas.width - 254, 47, 220, 23, "#5e5b53");
-    colorRect(canvas.width - 250, 51, highscore / 20, 16, "yellow");
+
+    let levelBarLength = 226;
+    colorRect(canvas.width / 2 - levelBarLength / 2 - 7, canvas.height - 50, levelBarLength, 29, "black");
+    colorRect(canvas.width / 2 - levelBarLength / 2 - 4, canvas.height - 47, levelBarLength - 6, 23, "#5e5b53");
+    colorRect(canvas.width / 2 - levelBarLength / 2 - 0, canvas.height - 43, highscore / 20, 16, "yellow");
 
 
-    canvasContext.drawImage(end, canvas.width / 2 - 400, endY);
-    canvasContext.drawImage(ground_stripe, ground_stripeX, 500);
+    canvasContext.drawImage(end, endX, endY);
+    canvasContext.drawImage(ground_stripe, ground_stripeX, ground_stripeY);
 
-    canvasContext.fillStyle = "black";
+    canvasContext.fillStyle = "white";
     canvasContext.font = "bold 15px Arial";
-    canvasContext.fillText(highscore, canvas.width - 170, 65);
-    canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width - 210, 38);
+    canvasContext.fillText(highscore, canvas.width / 2 - levelBarLength / 2 + 90, canvas.height - 30);
+    canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width / 2 - levelBarLength / 2 - 7, canvas.height - 60);
     canvasContext.font = "15px Arial";
     canvasContext.fillText("Jump = Space/Mouse/Touch", 50, 50);
     canvasContext.fillText("New Game = Space/Mouse/Touch after Game Over", 50, 70);

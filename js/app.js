@@ -3,8 +3,8 @@ let frame_width = 400;
 let frame_height = 450;
 
 let coinAnimationCounter = 0;
-let coin_frame_width = 16;
-let coin_frame_height = 16;
+let coin_frame_width = 24;
+let coin_frame_height = 24;
 
 let highscore = 0;
 let thisHighscore = 0;
@@ -95,9 +95,9 @@ const animate = () => {
         frame_width,
         frame_height,
         player.x,
-        player.y + 13,
-        frame_width / 4,
-        frame_height / 4
+        player.y + 26,
+        frame_width / 2,
+        frame_height / 2
     );
     window.requestAnimationFrame(animate);    
     

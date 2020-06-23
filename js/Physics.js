@@ -1,8 +1,9 @@
 //////////////////////// walls
-let speedFactor = 0.2;
+let speedFactor = 1;
 
 let ground_stripeX = 0;
-let groundY = 500;
+let ground_stripeY = canvas.height - 200;
+let groundY = ground_stripeY;
 
 let endX = 0;
 let endY = -500;
@@ -15,7 +16,7 @@ const moveAll = () => {
     if (dead == false) {
         key1.moveKey();
         wall1.collision();
-        wall2.collision();
+        // wall2.collision();
         coin1.moveCoin();
         coin2.moveCoin();
         coin3.moveCoin();
@@ -26,12 +27,12 @@ const moveAll = () => {
         highscore++;
         alpsX -= 0.02 * speedFactor;
         ground_stripeX -= 2 * speedFactor;
-        if (ground_stripeX <= -80) {
+        if (ground_stripeX <= -120) {
             ground_stripeX = 0;
         }
     } else {
         speedFactor = 0;
-        endY <= 0 ? (endY += 5) : (endY += 0);
+        endY <= canvas.height / 4 ? (endY += 5) : (endY += 0);
     }
     inputHandling();
 
@@ -43,13 +44,13 @@ const moveAll = () => {
 class wallClass {
     constructor() {
         this.x = 700;
-        this.height = 90;
+        this.height = 160;
         this.width = 20;
         this.y = groundY - this.height;
         this.speed = 8;
 
         this.collision = function () {
-            if (this.x <= player.x + frame_width / 4 - 15 && player.jumping == false) {
+            if (this.x <= player.x + frame_width / 2 - 15 && player.jumping == false) {
                 if (player.x <= this.x) {
                     this.speed = 0;
                     highscore += 0;
@@ -76,7 +77,7 @@ class wallClass {
 
             }
             else {
-                this.x = canvas.width + Math.random() * 100;
+                this.x = 600 + Math.random() * 100;
             }
         };
     }
@@ -91,8 +92,7 @@ let wallDistance = 500;
 
 
 wall2.x = wall1.x + wallDistance;
-wall2.height = 70;
-// wall2.width = 20;
+wall2.height = 130;
 wall2.y = groundY - wall2.height;
 
 
@@ -100,7 +100,7 @@ wall2.y = groundY - wall2.height;
 
 player = {
     jumping: true,
-    x: 150,
+    x: 50,
     x_velocity: 0,
     y: 0,
     y_velocity: 0
@@ -108,7 +108,7 @@ player = {
 
 function jump() {
     if (dead == false && player.jumping == false) {
-        player.y_velocity -= 40;
+        player.y_velocity -= 60;
         player.jumping = true;
     }
 }
@@ -121,9 +121,9 @@ const gravity = () => {
     // console.log("CoinX:" + coin1.x)
 
     // if player is falling below ground line
-    if (player.y > groundY - frame_height / 4) {
+    if (player.y > groundY - frame_height / 2) {
         player.jumping = false;
-        player.y = groundY - frame_height / 4;
+        player.y = groundY - frame_height / 2;
         player.y_velocity = 0;
     }
 }
@@ -133,7 +133,7 @@ const gravity = () => {
 
 class keyClass {
     constructor() {
-        this.x = canvas.width;
+        this.x = canvas.width + 300;
         this.y = 300;
         this.speed = -0.2;
         this.goingUp = false;
@@ -173,7 +173,7 @@ class coinClass {
                 if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true))      // hotfix
                 // if (player.y > this.y && player.y < this.y + 16)
                 {
-                    highscore += 200;
+                    highscore += 50;
                     this.x += 900;
                 }
                 
