@@ -30,6 +30,6 @@ const drawAll = () => {
     canvasContext.fillText(highscore, canvas.width / 2 - levelBarLength / 2 + 90, canvas.height - 30);
     canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width / 2 - levelBarLength / 2 - 7, canvas.height - 60);
     canvasContext.font = "15px Arial";
-    canvasContext.fillText("Jump = Space/Mouse/Touch", 50, 50);
-    canvasContext.fillText("New Game = Space/Mouse/Touch after Game Over", 50, 70);
+    // canvasContext.fillText("Jump = Space/Mouse/Touch", 50, 50);
+    // canvasContext.fillText("New Game = Space/Mouse/Touch after Game Over", 50, 70);
 }
