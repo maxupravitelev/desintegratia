@@ -45,7 +45,7 @@ class wallClass {
     constructor() {
         this.x = 700;
         this.height = 160;
-        this.width = 20;
+        this.width = 55;
         this.y = groundY - this.height;
         this.speed = 8;
 
@@ -72,7 +72,7 @@ class wallClass {
         };
 
         this.moveWall = () => {
-            if (this.x >= 0) {
+            if (this.x >= 0 - this.width) {
                 this.x -= this.speed * speedFactor;
 
             }
@@ -159,12 +159,13 @@ class coinClass {
     constructor() {
         this.x = canvas.width;
         this.y = 300;
+        this.width = 16
         this.speed = wall1.speed;
 
         this.moveCoin = () => {
             if (dead == false) {
                 this.x -= this.speed;
-            } if (this.x < 0) {
+            } if (this.x < 0 - this.width) {
                 this.x = 850;
             } 
                 // if (((player.y < (this.y + 16)) && (player.y > this.y)) 
