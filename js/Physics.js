@@ -18,8 +18,8 @@ const moveAll = () => {
         wall1.collision();
         // wall2.collision();
         coin1.moveCoin();
-        coin2.moveCoin();
-        coin3.moveCoin();
+        // coin2.moveCoin();
+        // coin3.moveCoin();
 
         gravity();
         highscoreCount();               // todo: refactor placement
@@ -77,7 +77,8 @@ class wallClass {
 
             }
             else {
-                this.x = 600 + Math.random() * 100;
+                this.x = canvas.width + Math.random() * 100;
+                this.y = groundY - this.height + Math.random() * 60;
             }
         };
     }
@@ -184,16 +185,16 @@ class coinClass {
 }
 
 let coin1 = new coinClass();
-coin1.x = 700;
+coin1.x = 900;
 coin1.y = 270;
 
-let coin2 = new coinClass();
-coin2.x = 1000;
-coin2.y = 280;
+// let coin2 = new coinClass();
+// coin2.x = 1000;
+// coin2.y = 280;
 
-let coin3 = new coinClass();
-coin3.x = 1300;
-coin3.y = 290;
+// let coin3 = new coinClass();
+// coin3.x = 1300;
+// coin3.y = 290;
 
 
 const speedUp = () => {
