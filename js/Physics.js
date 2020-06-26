@@ -10,6 +10,11 @@ let endY = -500;
 
 let alpsX = 0;
 
+let highscore = 0;
+let thisHighscore = 0;
+let bestHighScore = 0;
+
+let levelCounter = 0;
 
 const moveAll = () => {
 
@@ -25,6 +30,7 @@ const moveAll = () => {
         highscoreCount();               // todo: refactor placement
         speedUp();
         highscore++;
+        levelCounter++;
         alpsX -= 0.02 * speedFactor;
         ground_stripeX -= 2 * speedFactor;
         if (ground_stripeX <= -120) {
@@ -175,7 +181,8 @@ class coinClass {
                 if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true))      // hotfix
                 // if (player.y > this.y && player.y < this.y + 16)
                 {
-                    highscore += 50;
+                    highscore += 400;
+                    levelCounter += 400;
                     this.x += 900;
                 }
                 

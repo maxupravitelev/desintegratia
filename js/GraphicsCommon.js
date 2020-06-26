@@ -18,7 +18,8 @@ const drawAll = () => {
 
     colorRect(canvas.width - 257, 44, 226, 29, "black");
     colorRect(canvas.width - 254, 47, 220, 23, "#5e5b53");
-    colorRect(canvas.width - 250, 51, highscore / 20, 16, "yellow");
+    
+
 
     // let levelBarLength = 226;
     // colorRect(canvas.width / 2 - levelBarLength / 2 - 7, canvas.height - 50, levelBarLength, 29, "black");
@@ -29,10 +30,17 @@ const drawAll = () => {
     canvasContext.drawImage(end, endX, endY);
     canvasContext.drawImage(ground_stripe, ground_stripeX, ground_stripeY);
 
-    canvasContext.fillStyle = "white";
+    canvasContext.fillStyle = "black";
     canvasContext.font = "bold 15px Arial";
     
     // level bar counter
+   
+    if (levelCounter < 4000) {
+    colorRect(canvas.width - 250, 51, levelCounter / 20, 16, "yellow");
+    } else {
+        levelCounter = 0;
+    }
+   
     canvasContext.fillText(highscore, canvas.width - 170, 65);
     canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width - 210, 38);
     // canvasContext.fillText(highscore, canvas.width / 2 - levelBarLength / 2 + 90, canvas.height - 30);

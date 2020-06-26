@@ -6,9 +6,7 @@ let coinAnimationCounter = 0;
 let coin_frame_width = 24;
 let coin_frame_height = 24;
 
-let highscore = 0;
-let thisHighscore = 0;
-let bestHighScore = 0;
+
 
 let dead = false;
 
@@ -113,6 +111,7 @@ const reset = () => {
     playerSprite.src = "image/player-sprite.png";
 
     highscore = 0;
+    levelCounter = 0;
 
     endY = -500;
     alpsX = 0;
@@ -122,6 +121,7 @@ const reset = () => {
 
     wall1.speed = 8;
     wall2.speed = 8;
+    levelCounter = 0;
 
     speedFactor = 1;
 
