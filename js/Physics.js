@@ -16,6 +16,8 @@ let bestHighScore = 0;
 
 let levelCounter = 0;
 
+let currentLevel = 1;
+
 const moveAll = () => {
 
     if (dead == false) {
