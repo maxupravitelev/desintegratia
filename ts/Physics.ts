@@ -50,6 +50,13 @@ const moveAll = () => {
 
 
 class wallClass {
+    public x: number;
+    public y: number;
+    public height: number;
+    public width: number;
+    public speed: number;
+    public collision: any;
+    
     constructor() {
         this.x = 700;
         this.height = 160;
