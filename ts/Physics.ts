@@ -56,6 +56,7 @@ class wallClass {
     public width: number;
     public speed: number;
     public collision: any;
+    public moveWall: any;
     
     constructor() {
         this.x = 700;
@@ -148,6 +149,11 @@ const gravity = () => {
 
 
 class keyClass {
+    public x: number;
+    public y: number;
+    public speed: number;
+    public goingUp: boolean;
+    public moveKey: any;
     constructor() {
         this.x = canvas.width + 300;
         this.y = 300;
