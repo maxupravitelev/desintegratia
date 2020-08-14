@@ -12,7 +12,7 @@ let dead = false;
 
 
 
-let canvas = document.getElementById("gameCanvas");
+let canvas: any = document.getElementById("gameCanvas");
 let canvasContext = canvas.getContext("2d");
 
 // window.addEventListener("resize", resizeCanvas, false);
