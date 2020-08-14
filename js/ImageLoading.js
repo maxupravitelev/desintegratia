@@ -6,23 +6,18 @@ let alps = new Image();
 let key = new Image();
 let wall_sprite = new Image();
 let coin_sprite = new Image();
-
 let picsToLoad = 0;
-
 const countLoadedImagesAndLaunchIfReady = () => {
     picsToLoad--;
     if (picsToLoad == 0) {
         imageLoadingDoneSoStartGame();
     }
-}
-
+};
 const beginLoadingImage = (imgVar, fileName) => {
     imgVar.onload = countLoadedImagesAndLaunchIfReady();
     imgVar.src = fileName;
-}
-
+};
 const loadImages = () => {
-
     let imageList = [
         { varName: playerSprite, theFile: "image/player-sprite.png" },
         { varName: end, theFile: "image/end.png" },
@@ -32,14 +27,9 @@ const loadImages = () => {
         { varName: key, theFile: "image/key.png" },
         { varName: wall_sprite, theFile: "image/wall.png" },
         { varName: coin_sprite, theFile: "image/all_coins.png" }
-
-
     ];
-
     picsToLoad = imageList.length;
-
     for (let i = 0; i < imageList.length; i++) {
         beginLoadingImage(imageList[i].varName, imageList[i].theFile);
     }
-
-}
+};
