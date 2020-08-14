@@ -164,11 +164,25 @@ let key1 = new keyClass();
 
 
 class coinClass {
+    public x: number;
+    public y: number;
+    public width: number;
+    public speed: number;
+    public moveCoin: any;
     constructor() {
         this.x = canvas.width;
         this.y = 300;
         this.width = 16
         this.speed = wall1.speed;
+
+
+        // let x: number = canvas.width;
+
+        // let y: number = 300;
+
+        // let width: number = 16;
+
+        // let speed: number = wall1.speed;
 
         this.moveCoin = () => {
             if (dead == false) {

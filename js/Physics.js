@@ -133,6 +133,10 @@ class coinClass {
         this.y = 300;
         this.width = 16;
         this.speed = wall1.speed;
+        // let x: number = canvas.width;
+        // let y: number = 300;
+        // let width: number = 16;
+        // let speed: number = wall1.speed;
         this.moveCoin = () => {
             if (dead == false) {
                 this.x -= this.speed;
