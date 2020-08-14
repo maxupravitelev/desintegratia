@@ -107,7 +107,7 @@ wall2.y = groundY - wall2.height;
 
 /////////////////// object player
 
-player = {
+let player = {
     jumping: true,
     x: 50,
     x_velocity: 0,

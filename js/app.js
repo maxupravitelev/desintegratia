@@ -5,8 +5,8 @@ let coinAnimationCounter = 0;
 let coin_frame_width = 24;
 let coin_frame_height = 24;
 let dead = false;
-canvas = document.getElementById("gameCanvas");
-canvasContext = canvas.getContext("2d");
+let canvas = document.getElementById("gameCanvas");
+let canvasContext = canvas.getContext("2d");
 // window.addEventListener("resize", resizeCanvas, false);
 function resizeCanvas() {
     canvas.width = window.innerWidth;
