@@ -1,22 +1,22 @@
 //////////////////////// walls
-let speedFactor = 1;
+let speedFactor:number = 1;
 
-let ground_stripeX = 0;
-let ground_stripeY = canvas.height - 200;
-let groundY = ground_stripeY;
+let ground_stripeX:number = 0;
+let ground_stripeY:number = canvas.height - 200;
+let groundY:number = ground_stripeY;
 
-let endX = 0;
-let endY = -500;
+let endX:number = 0;
+let endY:number = -500;
 
-let alpsX = 0;
+let alpsX:number = 0;
 
-let highscore = 0;
-let thisHighscore = 0;
-let bestHighScore = 0;
+let highscore:number = 0;
+let thisHighscore:number = 0;
+let bestHighScore:number = 0;
 
-let levelCounter = 0;
+let levelCounter:number = 0;
 
-let currentLevel = 1;
+let currentLevel:number = 1;
 
 const moveAll = () => {
 
@@ -105,7 +105,7 @@ class wallClass {
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
-let wallDistance = 500;
+let wallDistance:number = 500;
 
 
 wall2.x = wall1.x + wallDistance;
@@ -123,7 +123,7 @@ let player = {
     y_velocity: 0
 };
 
-function jump() {
+const jump = () => {
     if (dead == false && player.jumping == false) {
         player.y_velocity -= 60;
         player.jumping = true;

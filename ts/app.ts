@@ -1,19 +1,19 @@
-let animationCounter = 0;
-let frame_width = 400;
-let frame_height = 450;
+let animationCounter:number = 0;
+let frame_width:number = 400;
+let frame_height:number = 450;
 
-let coinAnimationCounter = 0;
-let coin_frame_width = 24;
-let coin_frame_height = 24;
+let coinAnimationCounter:number = 0;
+let coin_frame_width:number = 24;
+let coin_frame_height:number = 24;
 
 
 
-let dead = false;
+let dead:boolean = false;
 
 
 
 let canvas: any = document.getElementById("gameCanvas");
-let canvasContext = canvas.getContext("2d");
+let canvasContext: any = canvas.getContext("2d");
 
 // window.addEventListener("resize", resizeCanvas, false);
 
@@ -32,10 +32,10 @@ window.onload = () => {
 
 };
 
-var currentTime = 0;
-var deltaTime = 0;
+var currentTime:number = 0;
+var deltaTime:number = 0;
 var pastTime = (new Date()).getTime();
-var framesPerSecond = 1 / 60;
+var framesPerSecond:number = 1 / 60;
 
 const gameloop = () => {
     currentTime = (new Date()).getTime();
