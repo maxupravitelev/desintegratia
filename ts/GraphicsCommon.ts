@@ -1,4 +1,4 @@
-const colorRect = (topLeftX, topLeftY, boxWidth, boxHeight, fillColor?) => {
+const colorRect = (topLeftX: number, topLeftY: number, boxWidth: number, boxHeight: number, fillColor?: string) => {
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }
