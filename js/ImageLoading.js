@@ -1,3 +1,4 @@
+"use strict";
 let playerSprite = new Image();
 let ground = new Image();
 let end = new Image();

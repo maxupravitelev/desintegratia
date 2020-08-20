@@ -1,3 +1,4 @@
+"use strict";
 //////////////////////// walls
 let speedFactor = 1;
 let ground_stripeX = 0;
@@ -88,12 +89,12 @@ let player = {
     y: 0,
     y_velocity: 0
 };
-function jump() {
+const jump = () => {
     if (dead == false && player.jumping == false) {
         player.y_velocity -= 60;
         player.jumping = true;
     }
-}
+};
 const gravity = () => {
     player.y_velocity += 2; // gravity
     player.y += player.y_velocity;

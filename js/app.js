@@ -1,3 +1,4 @@
+"use strict";
 let animationCounter = 0;
 let frame_width = 400;
 let frame_height = 450;
