@@ -6,7 +6,14 @@
         // "emitDecoratorMetadata": true,
         "module": "commonjs",
         "lib": ["DOM", "ES2019"],
-        "outDir": "js",
+        "removeComments": true,
+        // "outDir": "js",
     },
     "include": ["ts"],
+    "files": [
+        "index.ts"
+    ],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+
+    // "include": ["ts"], [""]
 }
