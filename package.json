@@ -1,0 +1,25 @@
+{
+  "name": "desintegratia",
+  "version": "0.0.5",
+  "description": "an endless runner in early stages. Current demo:\r https://maxupravitelev.github.io/desintegratia/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxupravitelev/desintegratia.git"
+  },
+  "author": "Max Upravitelev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxupravitelev/desintegratia/issues"
+  },
+  "homepage": "https://github.com/maxupravitelev/desintegratia#readme",
+  "dependencies": {
+    "nodemon": "^2.0.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}

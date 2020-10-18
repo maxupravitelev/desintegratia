@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "strict": true,
+        "strict": false,
         "watch": true,
         // "emitDecoratorMetadata": true,
         "module": "commonjs",
