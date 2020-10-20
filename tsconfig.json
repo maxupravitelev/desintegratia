@@ -9,9 +9,9 @@
         "removeComments": true,
         // "outDir": "js",
     },
-    "include": ["ts" ,"controllers", "models"],
+    "include": ["ts" ,"controllers", "models", "utils"],
     "files": [
-        "index.ts"
+        "index.ts", "app.ts"
     ],
     "exclude": ["node_modules", "**/*.spec.ts"]
 

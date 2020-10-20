@@ -1,19 +1,11 @@
-require("dotenv").config();
+const app = require('./app')
+const http = require('http')
 
-const express = require("express");
-const app = express();
-const request = require("request"); // todo: update to https://github.com/mikeal/bent
-const cors = require("cors");
-// const qs = require("querystring");
-// const cookieParser = require("cookie-parser");
+const config = require('./utils/config')
+const logger = require('./utils/logger')
 
-app.use(cors());
-app.use(express.json());
+const server = http.createServer(app)
 
-app.use(express.static("public"));
-
-
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+server.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`)
+})

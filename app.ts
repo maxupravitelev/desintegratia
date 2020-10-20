@@ -8,7 +8,7 @@ require('express-async-errors')
 const app = express()
 const cors = require('cors')
 
-const scoreRouter = require('./controllers/score')
+const scoreRouter = require('./controllers/scores')
 
 const mongoose = require('mongoose')
 
@@ -22,8 +22,10 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
     logger.error('error connection to MongoDB:', error.message)
   })
 
+
+
 app.use(cors())
-app.use(express.static('build'))
+app.use(express.static('public'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
