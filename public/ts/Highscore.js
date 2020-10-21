@@ -12,7 +12,9 @@ const highscoreCount = () => {
 fetch(url)
     .then((response) => response.json())
     .then((scores) => {
+    scores.sort((b, a) => a.score - b.score);
     console.log(scores);
+    bestHighScore = scores[0].score;
 });
 const postHighscore = async (data) => {
     let postUrl = baseUrl + "/new-score";
