@@ -100,11 +100,7 @@ const animate = () => {
     
 }
 
-const highscoreCount = () => {
-    if (highscore >= bestHighScore) {
-        bestHighScore = highscore;
-    }
-}
+
 
 const reset = () => {
     playerSprite.src = "image/player-sprite.png";

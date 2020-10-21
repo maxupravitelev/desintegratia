@@ -55,11 +55,6 @@ const animate = () => {
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
     window.requestAnimationFrame(animate);
 };
-const highscoreCount = () => {
-    if (highscore >= bestHighScore) {
-        bestHighScore = highscore;
-    }
-};
 const reset = () => {
     playerSprite.src = "image/player-sprite.png";
     highscore = 0;

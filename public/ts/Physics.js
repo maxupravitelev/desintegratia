@@ -13,7 +13,7 @@ const moveAll = () => {
         wall1.collision();
         coin1.moveCoin();
         gravity();
-        highscoreCount();
+        
         speedUp();
         highscore++;
         levelCounter++;
@@ -42,6 +42,7 @@ class wallClass {
                     this.speed = 0;
                     highscore += 0;
                     dead = true;
+                    highscoreCount();
                 }
                 else {
                     if (dead == false) {
