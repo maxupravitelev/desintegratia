@@ -11,7 +11,6 @@ let coin_frame_height:number = 24;
 let dead:boolean = false;
 
 
-
 let canvas: any = document.getElementById("gameCanvas");
 let canvasContext: any = canvas.getContext("2d");
 
@@ -147,3 +146,5 @@ const inputHandling = () => {
         document.addEventListener("mousedown", reset);
     }
 }
+
+

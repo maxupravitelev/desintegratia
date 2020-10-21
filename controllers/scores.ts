@@ -5,7 +5,7 @@ const { response } = require('../app')
 
 ///***** .get routes */
 
-/* .get all lists */
+/* .get all scores */
 scoreRouter.get('/', async (request, response) => {
   const scores = await Score.find({})
   response.json(scores)
@@ -15,10 +15,7 @@ scoreRouter.get('/', async (request, response) => {
 
 ///***** .post routes */
 
-/* .post new list; create new list*/
 scoreRouter.post('/new-score', async (request, response) => {
-
-  console.log(request.body.score)
 
     let score = new Score ({
       score: request.body.score

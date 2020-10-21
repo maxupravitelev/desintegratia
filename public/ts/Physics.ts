@@ -10,9 +10,7 @@ let endY:number = -500;
 
 let alpsX:number = 0;
 
-let highscore:number = 0;
-let thisHighscore:number = 0;
-let bestHighScore:number = 0;
+
 
 let levelCounter:number = 0;
 

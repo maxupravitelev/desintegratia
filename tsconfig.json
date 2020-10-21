@@ -9,7 +9,7 @@
         "removeComments": true,
         // "outDir": "js",
     },
-    "include": ["ts" ,"controllers", "models", "utils"],
+    "include": ["public" ,"controllers", "models", "utils"],
     "files": [
         "index.ts", "app.ts"
     ],

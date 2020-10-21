@@ -6,7 +6,6 @@ scoreRouter.get('/', async (request, response) => {
     response.json(scores);
 });
 scoreRouter.post('/new-score', async (request, response) => {
-    console.log(request.body.score);
     let score = new Score({
         score: request.body.score
     });

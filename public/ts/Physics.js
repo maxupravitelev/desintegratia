@@ -5,9 +5,6 @@ let groundY = ground_stripeY;
 let endX = 0;
 let endY = -500;
 let alpsX = 0;
-let highscore = 0;
-let thisHighscore = 0;
-let bestHighScore = 0;
 let levelCounter = 0;
 let currentLevel = 1;
 const moveAll = () => {
