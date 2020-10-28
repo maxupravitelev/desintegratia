@@ -14,7 +14,6 @@ const countLoadedImagesAndLaunchIfReady = () => {
     }
 };
 const beginLoadingImage = (imgVar, fileName) => {
-    console.log(typeof imgVar);
     imgVar.onload = countLoadedImagesAndLaunchIfReady();
     imgVar.src = fileName;
 };

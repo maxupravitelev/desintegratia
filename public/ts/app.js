@@ -7,11 +7,11 @@ let coin_frame_height = 24;
 let dead = false;
 let canvas = document.getElementById("gameCanvas");
 let canvasContext = canvas.getContext("2d");
-function resizeCanvas() {
+const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-}
-window.onload = () => {
+};
+window.onload = async () => {
     if (window.innerWidth < 800) {
     }
     loadImages();

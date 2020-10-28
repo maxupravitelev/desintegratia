@@ -16,16 +16,17 @@ let canvasContext: any = canvas.getContext("2d");
 
 // window.addEventListener("resize", resizeCanvas, false);
 
-function resizeCanvas() {
+const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
 
-window.onload = () => {
+window.onload = async () => {
     
     if (window.innerWidth < 800 ) {
         // resizeCanvas();
     }
+    
 
     loadImages();
 

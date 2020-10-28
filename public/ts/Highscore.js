@@ -5,7 +5,7 @@ let baseUrl = "http://localhost:3000/api/scores";
 let url = baseUrl;
 let globalScores = {};
 const highscoreCount = () => {
-    if (highscore >= bestHighScore) {
+    if (highscore >= globalScores[2].score) {
         bestHighScore = highscore;
         postHighscore(bestHighScore);
     }
@@ -19,6 +19,17 @@ fetch(url)
     bestHighScore = scores[0].score;
     console.log(scores[0].playerName);
 });
+const getHighscoresFromBackend = () => {
+    fetch(url)
+        .then((response) => response.json())
+        .then((scores) => {
+        scores.sort((b, a) => a.score - b.score);
+        globalScores = scores;
+        console.log(scores);
+        bestHighScore = scores[0].score;
+        console.log(scores[0].playerName);
+    });
+};
 const postHighscore = async (data) => {
     let playerName = prompt("Please enter your name");
     if (!playerName) {
@@ -36,4 +47,5 @@ const postHighscore = async (data) => {
         },
         body: JSON.stringify(scoresObj)
     });
+    getHighscoresFromBackend();
 };
