@@ -39,10 +39,21 @@ const drawAll = () => {
 
     canvasContext.fillText(highscore, canvas.width - 170, 65);
     canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width - 210, 38);
+    
+    
+
+    // highscore table
+    canvasContext.fillText("#1 " + globalScores[0].playerName + " " + globalScores[0].score, canvas.width - 250, 95);
+    canvasContext.fillText("#2 " + globalScores[1].playerName + " " + globalScores[1].score, canvas.width - 250, 110);
+    canvasContext.fillText("#3 " + globalScores[2].playerName + " " + globalScores[2].score, canvas.width - 250, 125);
+
+    // canvasContext.textAlign = "right"
+
+    
     // canvasContext.fillText(highscore, canvas.width / 2 - levelBarLength / 2 + 90, canvas.height - 30);
     // canvasContext.fillText("Best Highscore: " + bestHighScore, canvas.width / 2 - levelBarLength / 2 - 7, canvas.height - 60);
     
-    canvasContext.font = "15px Arial";
+    // canvasContext.font = "15px Arial";
 
 
     // canvasContext.fillText("Jump = Space/Mouse/Touch", 50, 50);

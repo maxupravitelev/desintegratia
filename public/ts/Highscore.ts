@@ -6,6 +6,8 @@ let baseUrl: string = "http://localhost:3000/api/scores"
 
 let url: string = baseUrl;
 
+let globalScores: object = {}
+
 const highscoreCount = () => {
     if (highscore >= bestHighScore) {
         bestHighScore = highscore;
@@ -18,6 +20,7 @@ fetch(url)
     .then((response) => response.json())
     .then((scores) => {
         scores.sort((b, a) => a.score - b.score)
+        globalScores = scores
         console.log(scores)
         bestHighScore = scores[0].score
         console.log(scores[0].playerName)
