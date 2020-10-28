@@ -26,6 +26,14 @@ fetch(url)
 
 const postHighscore = async (data) => {
     
+    let highscoreName = prompt("Please enter your name");
+
+    if (!highscoreName) {
+        highscoreName = 'Lorempsa Ipsus'
+    }
+
+    console.log(highscoreName)
+
     let postUrl = baseUrl + "/new-score"
 
     let scoresObj = {

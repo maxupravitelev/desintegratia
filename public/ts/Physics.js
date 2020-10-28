@@ -13,7 +13,6 @@ const moveAll = () => {
         wall1.collision();
         coin1.moveCoin();
         gravity();
-        
         speedUp();
         highscore++;
         levelCounter++;

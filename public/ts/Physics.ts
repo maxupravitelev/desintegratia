@@ -10,8 +10,6 @@ let endY:number = -500;
 
 let alpsX:number = 0;
 
-
-
 let levelCounter:number = 0;
 
 let currentLevel:number = 1;
@@ -27,7 +25,6 @@ const moveAll = () => {
         // coin3.moveCoin();
 
         gravity();
-        highscoreCount();               // todo: refactor placement
         speedUp();
         highscore++;
         levelCounter++;
@@ -69,6 +66,7 @@ class wallClass {
                     this.speed = 0;
                     highscore += 0;
                     dead = true;
+                    highscoreCount();               // todo: refactor placement
 
 
                 }
