@@ -7,7 +7,8 @@ scoreRouter.get('/', async (request, response) => {
 });
 scoreRouter.post('/new-score', async (request, response) => {
     let score = new Score({
-        score: request.body.score
+        score: request.body.score,
+        playerName: request.body.playerName
     });
     const newScore = await score.save();
     response.json(newScore);

@@ -15,16 +15,17 @@ fetch(url)
     scores.sort((b, a) => a.score - b.score);
     console.log(scores);
     bestHighScore = scores[0].score;
+    console.log(scores[0].playerName);
 });
 const postHighscore = async (data) => {
-    let highscoreName = prompt("Please enter your name");
-    if (!highscoreName) {
-        highscoreName = 'Lorempsa Ipsus';
+    let playerName = prompt("Please enter your name");
+    if (!playerName) {
+        playerName = 'Lorempsa Ipsus';
     }
-    console.log(highscoreName);
     let postUrl = baseUrl + "/new-score";
     let scoresObj = {
-        'score': data
+        'score': data,
+        playerName
     };
     const response = await fetch(postUrl, {
         method: 'POST',
