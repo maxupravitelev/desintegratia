@@ -40,7 +40,7 @@ var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
 const gameloop = () => {
-    if (gameState === 'START') {
+    if (!(gameState === 'LOAD')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
         while (deltaTime > framesPerSecond) {
@@ -64,14 +64,14 @@ const imageLoadingDoneSoStartGame = () => {
 
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
-        gameState === 'DEAD' ? reset() : jump();
+        (gameState === 'GAME_OVER') ? reset() : jump();
     }
 }
 
 const animate = () => {
     
     let coin_frame = Math.floor(coinAnimationCounter % 8);
-    if (gameState === 'DEAD') {
+    if (gameState === 'GAME_OVER') {
         coin_frame = Math.floor(coinAnimationCounter % 1);
     }
     
@@ -82,7 +82,7 @@ const animate = () => {
 
 
     let frame = Math.floor(animationCounter % 2);
-    if (gameState === 'DEAD') {
+    if (gameState === 'GAME_OVER') {
         frame = Math.floor(animationCounter % 1);
     }
 
@@ -90,17 +90,7 @@ const animate = () => {
     //     playerSprite.src = "image/angry.png";
     // }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-    canvasContext.drawImage(
-        playerSprite,
-        frame * frame_width,
-        0,
-        frame_width,
-        frame_height,
-        player.x,
-        player.y + 26,
-        frame_width / 2,
-        frame_height / 2
-    );
+    canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
     window.requestAnimationFrame(animate);    
     
 }
@@ -131,7 +121,7 @@ const reset = () => {
 
     inputHandling();
 
-    gameState === 'START';
+    gameState = 'START';
     player.jumping == false;
 }
 
@@ -142,7 +132,7 @@ const inputHandling = () => {
         document.addEventListener("mousedown", jump);
         document.addEventListener("touchstart", jump);
     }
-    if (gameState === 'DEAD') {
+    if (gameState === 'GAME_OVER') {
         document.removeEventListener("mousedown", jump);
         document.addEventListener("mousedown", reset);
     }

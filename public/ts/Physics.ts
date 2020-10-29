@@ -16,7 +16,7 @@ let currentLevel:number = 1;
 
 const moveAll = () => {
 
-    if (dead == false) {
+    if (gameState == 'START') {
         key1.moveKey();
         wall1.collision();
         // wall2.collision();
@@ -33,7 +33,7 @@ const moveAll = () => {
         if (ground_stripeX <= -120) {
             ground_stripeX = 0;
         }
-    } else {
+    } else if (gameState === 'GAME_OVER') {
         speedFactor = 0;
         endY <= canvas.height / 4 ? (endY += 5) : (endY += 0);
     }

@@ -8,7 +8,7 @@ let alpsX = 0;
 let levelCounter = 0;
 let currentLevel = 1;
 const moveAll = () => {
-    if (dead == false) {
+    if (gameState == 'START') {
         key1.moveKey();
         wall1.collision();
         coin1.moveCoin();
@@ -22,7 +22,7 @@ const moveAll = () => {
             ground_stripeX = 0;
         }
     }
-    else {
+    else if (gameState === 'GAME_OVER') {
         speedFactor = 0;
         endY <= canvas.height / 4 ? (endY += 5) : (endY += 0);
     }

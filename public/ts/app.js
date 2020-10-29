@@ -22,7 +22,7 @@ var deltaTime = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond = 1 / 60;
 const gameloop = () => {
-    if (gameState === 'START') {
+    if (!(gameState === 'LOAD')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
         while (deltaTime > framesPerSecond) {
@@ -42,17 +42,17 @@ const imageLoadingDoneSoStartGame = () => {
 };
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
-        gameState === 'DEAD' ? reset() : jump();
+        (gameState === 'GAME_OVER') ? reset() : jump();
     }
 };
 const animate = () => {
     let coin_frame = Math.floor(coinAnimationCounter % 8);
-    if (gameState === 'DEAD') {
+    if (gameState === 'GAME_OVER') {
         coin_frame = Math.floor(coinAnimationCounter % 1);
     }
     canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
     let frame = Math.floor(animationCounter % 2);
-    if (gameState === 'DEAD') {
+    if (gameState === 'GAME_OVER') {
         frame = Math.floor(animationCounter % 1);
     }
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
@@ -74,7 +74,7 @@ const reset = () => {
     wall1.collision();
     wall2.x = wall1.x + wallDistance;
     inputHandling();
-    gameState === 'START';
+    gameState = 'START';
     player.jumping == false;
 };
 const inputHandling = () => {
@@ -84,7 +84,7 @@ const inputHandling = () => {
         document.addEventListener("mousedown", jump);
         document.addEventListener("touchstart", jump);
     }
-    if (gameState === 'DEAD') {
+    if (gameState === 'GAME_OVER') {
         document.removeEventListener("mousedown", jump);
         document.addEventListener("mousedown", reset);
     }
