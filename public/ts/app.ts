@@ -64,14 +64,14 @@ const imageLoadingDoneSoStartGame = () => {
 
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
-        dead ? reset() : jump();
+        gameState === 'DEAD' ? reset() : jump();
     }
 }
 
 const animate = () => {
     
     let coin_frame = Math.floor(coinAnimationCounter % 8);
-    if (dead == true) {
+    if (gameState === 'DEAD') {
         coin_frame = Math.floor(coinAnimationCounter % 1);
     }
     
@@ -82,7 +82,7 @@ const animate = () => {
 
 
     let frame = Math.floor(animationCounter % 2);
-    if (dead == true) {
+    if (gameState === 'DEAD') {
         frame = Math.floor(animationCounter % 1);
     }
 
@@ -131,18 +131,18 @@ const reset = () => {
 
     inputHandling();
 
-    dead = false;
+    gameState === 'START';
     player.jumping == false;
 }
 
 const inputHandling = () => {
-    if (dead == false) {
+    if (gameState === 'START') {
         document.addEventListener("keydown", keyPressed);
         document.removeEventListener("mousedown", reset);
         document.addEventListener("mousedown", jump);
         document.addEventListener("touchstart", jump);
     }
-    if (dead == true) {
+    if (gameState === 'DEAD') {
         document.removeEventListener("mousedown", jump);
         document.addEventListener("mousedown", reset);
     }

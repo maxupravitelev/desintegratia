@@ -65,19 +65,21 @@ class wallClass {
                 if (player.x <= this.x) {
                     this.speed = 0;
                     highscore += 0;
-                    dead = true;
+                    // dead = true;
                     highscoreCount();               // todo: refactor placement
-
+                    gameState = 'GAME_OVER'
 
                 }
                 else {
-                    if (dead == false) {
+                    if (gameState == 'START') {
+                    // if (dead == false) {
                         this.moveWall();
                     }
                 }
             }
             else {
-                if (dead == false) {
+                if (gameState == 'START') {
+                // if (dead == false) {
                     this.moveWall();
                 }
             }
@@ -120,7 +122,9 @@ let player = {
 };
 
 const jump = () => {
-    if (dead == false && player.jumping == false) {
+    if (gameState === 'START' && player.jumping == false) {
+
+    // if (dead == false && player.jumping == false) {
         player.y_velocity -= 60;
         player.jumping = true;
     }
@@ -157,11 +161,11 @@ class keyClass {
         this.goingUp = false;
 
         this.moveKey = function () {
-            if (dead == false && this.x > 340) {
+            if (gameState === 'START' && this.x > 340) {
                 this.x += this.speed;
                 this.y += Math.sin(this.x / 3) * 2;
             }
-            else if (dead == false && this.x <= 340) {
+            else if (gameState === 'START' && this.x <= 340) {
                 this.x += -0.02;
                 this.y += Math.sin(this.x / 0.5) * 1;
             }
@@ -194,7 +198,7 @@ class coinClass {
         // let speed: number = wall1.speed;
 
         this.moveCoin = () => {
-            if (dead == false) {
+            if (gameState === 'START') {
                 this.x -= this.speed;
             } if (this.x < 0 - this.width) {
                 this.x = 850;

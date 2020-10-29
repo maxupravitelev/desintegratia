@@ -42,17 +42,17 @@ const imageLoadingDoneSoStartGame = () => {
 };
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
-        dead ? reset() : jump();
+        gameState === 'DEAD' ? reset() : jump();
     }
 };
 const animate = () => {
     let coin_frame = Math.floor(coinAnimationCounter % 8);
-    if (dead == true) {
+    if (gameState === 'DEAD') {
         coin_frame = Math.floor(coinAnimationCounter % 1);
     }
     canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
     let frame = Math.floor(animationCounter % 2);
-    if (dead == true) {
+    if (gameState === 'DEAD') {
         frame = Math.floor(animationCounter % 1);
     }
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
@@ -74,17 +74,17 @@ const reset = () => {
     wall1.collision();
     wall2.x = wall1.x + wallDistance;
     inputHandling();
-    dead = false;
+    gameState === 'START';
     player.jumping == false;
 };
 const inputHandling = () => {
-    if (dead == false) {
+    if (gameState === 'START') {
         document.addEventListener("keydown", keyPressed);
         document.removeEventListener("mousedown", reset);
         document.addEventListener("mousedown", jump);
         document.addEventListener("touchstart", jump);
     }
-    if (dead == true) {
+    if (gameState === 'DEAD') {
         document.removeEventListener("mousedown", jump);
         document.addEventListener("mousedown", reset);
     }
