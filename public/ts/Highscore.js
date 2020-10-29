@@ -18,6 +18,7 @@ fetch(url)
     console.log(scores);
     bestHighScore = scores[0].score;
     console.log(scores[0].playerName);
+    gameState = 'START';
 });
 const getHighscoresFromBackend = () => {
     fetch(url)

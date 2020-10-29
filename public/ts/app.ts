@@ -14,6 +14,8 @@ let dead:boolean = false;
 let canvas: any = document.getElementById("gameCanvas");
 let canvasContext: any = canvas.getContext("2d");
 
+let gameState: string = 'LOAD'
+
 // window.addEventListener("resize", resizeCanvas, false);
 
 const resizeCanvas = () => {
@@ -38,18 +40,20 @@ var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
 const gameloop = () => {
-    currentTime = (new Date()).getTime();
-    deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
-    while (deltaTime > framesPerSecond) {
-        deltaTime = deltaTime - framesPerSecond;
-        moveAll();
-        animationCounter = animationCounter + 0.1;
-        coinAnimationCounter = coinAnimationCounter + 0.2;
+    if (gameState === 'START') {
+        currentTime = (new Date()).getTime();
+        deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
+        while (deltaTime > framesPerSecond) {
+            deltaTime = deltaTime - framesPerSecond;
+            moveAll();
+            animationCounter = animationCounter + 0.1;
+            coinAnimationCounter = coinAnimationCounter + 0.2;
 
+        }
+        drawAll();
+        pastTime = currentTime;
+        requestAnimationFrame(gameloop);
     }
-    drawAll();
-    pastTime = currentTime;
-    requestAnimationFrame(gameloop);
 }
 
 

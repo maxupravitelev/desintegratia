@@ -7,6 +7,7 @@ let coin_frame_height = 24;
 let dead = false;
 let canvas = document.getElementById("gameCanvas");
 let canvasContext = canvas.getContext("2d");
+let gameState = 'LOAD';
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -21,17 +22,19 @@ var deltaTime = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond = 1 / 60;
 const gameloop = () => {
-    currentTime = (new Date()).getTime();
-    deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
-    while (deltaTime > framesPerSecond) {
-        deltaTime = deltaTime - framesPerSecond;
-        moveAll();
-        animationCounter = animationCounter + 0.1;
-        coinAnimationCounter = coinAnimationCounter + 0.2;
+    if (gameState === 'START') {
+        currentTime = (new Date()).getTime();
+        deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
+        while (deltaTime > framesPerSecond) {
+            deltaTime = deltaTime - framesPerSecond;
+            moveAll();
+            animationCounter = animationCounter + 0.1;
+            coinAnimationCounter = coinAnimationCounter + 0.2;
+        }
+        drawAll();
+        pastTime = currentTime;
+        requestAnimationFrame(gameloop);
     }
-    drawAll();
-    pastTime = currentTime;
-    requestAnimationFrame(gameloop);
 };
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
