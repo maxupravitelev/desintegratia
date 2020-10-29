@@ -15,7 +15,7 @@ const resizeCanvas = () => {
 window.onload = async () => {
     if (window.innerWidth < 800) {
     }
-    loadImages();
+    getHighscoresFromBackend();
 };
 var currentTime = 0;
 var deltaTime = 0;
@@ -39,6 +39,7 @@ const gameloop = () => {
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
     window.requestAnimationFrame(animate);
+    gameState = 'START';
 };
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {

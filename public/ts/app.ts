@@ -29,8 +29,7 @@ window.onload = async () => {
         // resizeCanvas();
     }
     
-
-    loadImages();
+    getHighscoresFromBackend();
 
 };
 
@@ -60,6 +59,8 @@ const gameloop = () => {
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
     window.requestAnimationFrame(animate);
+    gameState = 'START'
+
 }
 
 const keyPressed = (evt) => {
