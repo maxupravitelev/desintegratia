@@ -12,7 +12,6 @@ let picsToLoad = 0;
 const countLoadedImagesAndLaunchIfReady = () => {
     picsToLoad--;
     if (picsToLoad == 0) {
-        // setTimeout(imageLoadingDoneSoStartGame, 100)
         imageLoadingDoneSoStartGame();
     }
 }

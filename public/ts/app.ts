@@ -14,7 +14,7 @@ let dead:boolean = false;
 let canvas: any = document.getElementById("gameCanvas");
 let canvasContext: any = canvas.getContext("2d");
 
-let gameState: string = 'LOAD'
+let gameState: string = 'INIT'
 
 // window.addEventListener("resize", resizeCanvas, false);
 
@@ -39,7 +39,7 @@ var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
 const gameloop = () => {
-    if (!(gameState === 'LOAD')) {
+    if (!(gameState === 'INIT')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
         while (deltaTime > framesPerSecond) {

@@ -7,7 +7,7 @@ let coin_frame_height = 24;
 let dead = false;
 let canvas = document.getElementById("gameCanvas");
 let canvasContext = canvas.getContext("2d");
-let gameState = 'LOAD';
+let gameState = 'INIT';
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -22,7 +22,7 @@ var deltaTime = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond = 1 / 60;
 const gameloop = () => {
-    if (!(gameState === 'LOAD')) {
+    if (!(gameState === 'INIT')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
         while (deltaTime > framesPerSecond) {

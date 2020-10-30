@@ -17,17 +17,6 @@ const highscoreCount = () => {
 
 // fetch highscore from backend
 
-fetch(url)
-.then((response) => response.json())
-.then((scores) => {
-    scores.sort((b, a) => a.score - b.score)
-    globalScores = scores
-    console.log(scores)
-    bestHighScore = scores[0].score
-    console.log(scores[0].playerName)
-    gameState = 'START'
-})
-
 const getHighscoresFromBackend = () => {
     fetch(url)
         .then((response) => response.json())
@@ -37,7 +26,10 @@ const getHighscoresFromBackend = () => {
             console.log(scores)
             bestHighScore = scores[0].score
             console.log(scores[0].playerName)
-            loadImages();
+            if (gameState === 'INIT') {
+                loadImages();
+            }
+            
         })
 }
 
@@ -66,6 +58,7 @@ const postHighscore = async (data) => {
         },
         body: JSON.stringify(scoresObj) 
     });
+    // gameState = 'INIT'
     getHighscoresFromBackend();
       
 }
