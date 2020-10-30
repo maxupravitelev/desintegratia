@@ -4,7 +4,6 @@ let frame_height = 450;
 let coinAnimationCounter = 0;
 let coin_frame_width = 24;
 let coin_frame_height = 24;
-let dead = false;
 let canvas = document.getElementById("gameCanvas");
 let canvasContext = canvas.getContext("2d");
 let gameState = 'INIT';
@@ -28,6 +27,7 @@ const gameloop = () => {
         while (deltaTime > framesPerSecond) {
             deltaTime = deltaTime - framesPerSecond;
             moveAll();
+            inputHandling();
             animationCounter = animationCounter + 0.1;
             coinAnimationCounter = coinAnimationCounter + 0.2;
         }
@@ -74,7 +74,6 @@ const reset = () => {
     wall1.x = 700;
     wall1.collision();
     wall2.x = wall1.x + wallDistance;
-    inputHandling();
     gameState = 'START';
     player.jumping == false;
 };

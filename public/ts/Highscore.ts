@@ -3,7 +3,6 @@ let thisHighscore:number = 0;
 let bestHighScore:number = 0;
 
 let baseUrl: string = "http://localhost:3000/api/scores"
-
 let url: string = baseUrl;
 
 let globalScores: object = {}
@@ -21,6 +20,8 @@ const getHighscoresFromBackend = () => {
     fetch(url)
         .then((response) => response.json())
         .then((scores) => {
+            // todo: handle error when scores DB is empty
+            
             scores.sort((b, a) => a.score - b.score)
             globalScores = scores
             console.log(scores)
@@ -36,8 +37,7 @@ const getHighscoresFromBackend = () => {
 
 // post highscore to backend
 
-const postHighscore = async (data) => {
-    
+const postHighscore = async (data) => {   
     let playerName = prompt("Please enter your name");
 
     if (!playerName) {
@@ -58,9 +58,7 @@ const postHighscore = async (data) => {
         },
         body: JSON.stringify(scoresObj) 
     });
-    // gameState = 'INIT'
     getHighscoresFromBackend();
-      
 }
 
 

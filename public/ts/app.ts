@@ -1,15 +1,11 @@
 let animationCounter:number = 0;
+
 let frame_width:number = 400;
 let frame_height:number = 450;
 
 let coinAnimationCounter:number = 0;
 let coin_frame_width:number = 24;
 let coin_frame_height:number = 24;
-
-
-
-let dead:boolean = false;
-
 
 let canvas: any = document.getElementById("gameCanvas");
 let canvasContext: any = canvas.getContext("2d");
@@ -45,6 +41,7 @@ const gameloop = () => {
         while (deltaTime > framesPerSecond) {
             deltaTime = deltaTime - framesPerSecond;
             moveAll();
+            inputHandling();
             animationCounter = animationCounter + 0.1;
             coinAnimationCounter = coinAnimationCounter + 0.2;
 
@@ -60,7 +57,6 @@ const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
     window.requestAnimationFrame(animate);
     gameState = 'START'
-
 }
 
 const keyPressed = (evt) => {
@@ -70,17 +66,14 @@ const keyPressed = (evt) => {
 }
 
 const animate = () => {
-    
     let coin_frame = Math.floor(coinAnimationCounter % 8);
     if (gameState === 'GAME_OVER') {
         coin_frame = Math.floor(coinAnimationCounter % 1);
     }
-    
         //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
         canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
         // canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin2.x, coin2.y, coin_frame_width * 2, coin_frame_height * 2);
         // canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin3.x, coin3.y, coin_frame_width * 2, coin_frame_height * 2);
-
 
     let frame = Math.floor(animationCounter % 2);
     if (gameState === 'GAME_OVER') {
@@ -93,7 +86,6 @@ const animate = () => {
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
     window.requestAnimationFrame(animate);    
-    
 }
 
 
@@ -119,8 +111,6 @@ const reset = () => {
     wall1.x = 700;
     wall1.collision();
     wall2.x = wall1.x + wallDistance;
-
-    inputHandling();
 
     gameState = 'START';
     player.jumping == false;

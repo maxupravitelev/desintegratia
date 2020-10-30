@@ -26,7 +26,6 @@ const moveAll = () => {
         speedFactor = 0;
         endY <= canvas.height / 4 ? (endY += 5) : (endY += 0);
     }
-    inputHandling();
 };
 class wallClass {
     constructor() {
@@ -40,8 +39,8 @@ class wallClass {
                 if (player.x <= this.x) {
                     this.speed = 0;
                     highscore += 0;
-                    highscoreCount();
                     gameState = 'GAME_OVER';
+                    highscoreCount();
                 }
                 else {
                     if (gameState == 'START') {

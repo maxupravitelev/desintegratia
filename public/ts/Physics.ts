@@ -1,4 +1,3 @@
-//////////////////////// walls
 let speedFactor:number = 1;
 
 let ground_stripeX:number = 0;
@@ -37,7 +36,7 @@ const moveAll = () => {
         speedFactor = 0;
         endY <= canvas.height / 4 ? (endY += 5) : (endY += 0);
     }
-    inputHandling();
+    
 
 }
 
@@ -65,21 +64,19 @@ class wallClass {
                 if (player.x <= this.x) {
                     this.speed = 0;
                     highscore += 0;
-                    // dead = true;
-                    highscoreCount();               // todo: refactor placement
                     gameState = 'GAME_OVER'
+                    highscoreCount();               // todo: refactor placement
+
 
                 }
                 else {
                     if (gameState == 'START') {
-                    // if (dead == false) {
                         this.moveWall();
                     }
                 }
             }
             else {
                 if (gameState == 'START') {
-                // if (dead == false) {
                     this.moveWall();
                 }
             }
@@ -123,8 +120,6 @@ let player = {
 
 const jump = () => {
     if (gameState === 'START' && player.jumping == false) {
-
-    // if (dead == false && player.jumping == false) {
         player.y_velocity -= 60;
         player.jumping = true;
     }
