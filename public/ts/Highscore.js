@@ -1,7 +1,7 @@
 let highscore = 0;
 let thisHighscore = 0;
 let bestHighScore = 0;
-let baseUrl = "https://desintegratia.herokuapp.com/";
+let baseUrl = "https://desintegratia.herokuapp.com/api/scores";
 let url = baseUrl;
 let globalScores = {};
 const highscoreCount = () => {
