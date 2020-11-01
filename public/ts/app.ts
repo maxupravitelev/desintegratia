@@ -16,15 +16,19 @@ let gameState: string = 'INIT'
 
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = 896; // height of background image
 }
 
-window.onload = async () => {
+window.onload = () => {
     
     if (window.innerWidth < 800 ) {
         // resizeCanvas();
     }
     
+    if (window.innerHeight > window.innerWidth) {
+        resizeCanvas();
+    }
+
     getHighscoresFromBackend();
 
 };

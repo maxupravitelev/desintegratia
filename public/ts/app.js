@@ -9,10 +9,13 @@ let canvasContext = canvas.getContext("2d");
 let gameState = 'INIT';
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = 896;
 };
-window.onload = async () => {
+window.onload = () => {
     if (window.innerWidth < 800) {
+    }
+    if (window.innerHeight > window.innerWidth) {
+        resizeCanvas();
     }
     getHighscoresFromBackend();
 };
