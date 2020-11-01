@@ -25,18 +25,7 @@ window.onload = () => {
     //     resizeCanvas();
     // }
 
-    if (window.innerWidth < 800 ) {
-        let gameCanvas: any = document.getElementById("canvas");
-        if (gameCanvas.requestFullscreen) {
-            gameCanvas.requestFullscreen();
-        } else if (gameCanvas.mozRequestFullScreen) { /* Firefox */
-            gameCanvas.mozRequestFullScreen();
-        } else if (gameCanvas.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            gameCanvas.webkitRequestFullscreen();
-        } else if (gameCanvas.msRequestFullscreen) { /* IE/Edge */
-            gameCanvas.msRequestFullscreen();
-        }
-    }
+
     
     // if (window.innerHeight > window.innerWidth) {
     //     resizeCanvas();
@@ -45,6 +34,23 @@ window.onload = () => {
     getHighscoresFromBackend();
 
 };
+
+document.getElementById("startFullscreen")!.addEventListener("click", () => {
+
+    let gameCanvas: any = document.getElementById("gameCanvas");
+  
+      if (gameCanvas.requestFullscreen) {
+        gameCanvas.requestFullscreen();
+      } else if (gameCanvas.mozRequestFullScreen) { /* Firefox */
+        gameCanvas.mozRequestFullScreen();
+      } else if (gameCanvas.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        gameCanvas.webkitRequestFullscreen();
+      } else if (gameCanvas.msRequestFullscreen) { /* IE/Edge */
+        gameCanvas.msRequestFullscreen();
+      }
+  
+    startSpotifyPlayer();
+  });
 
 var currentTime:number = 0;
 var deltaTime:number = 0;

@@ -12,6 +12,7 @@ let picsToLoad = 0;
 const countLoadedImagesAndLaunchIfReady = () => {
     picsToLoad--;
     if (picsToLoad == 0) {
+
         imageLoadingDoneSoStartGame();
     }
 }

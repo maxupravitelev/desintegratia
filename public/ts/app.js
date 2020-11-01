@@ -12,23 +12,24 @@ const resizeCanvas = () => {
     canvas.height = 896;
 };
 window.onload = () => {
-    if (window.innerWidth < 800) {
-        let gameCanvas = document.getElementById("canvas");
-        if (gameCanvas.requestFullscreen) {
-            gameCanvas.requestFullscreen();
-        }
-        else if (gameCanvas.mozRequestFullScreen) {
-            gameCanvas.mozRequestFullScreen();
-        }
-        else if (gameCanvas.webkitRequestFullscreen) {
-            gameCanvas.webkitRequestFullscreen();
-        }
-        else if (gameCanvas.msRequestFullscreen) {
-            gameCanvas.msRequestFullscreen();
-        }
-    }
     getHighscoresFromBackend();
 };
+document.getElementById("startFullscreen").addEventListener("click", () => {
+    let gameCanvas = document.getElementById("gameCanvas");
+    if (gameCanvas.requestFullscreen) {
+        gameCanvas.requestFullscreen();
+    }
+    else if (gameCanvas.mozRequestFullScreen) {
+        gameCanvas.mozRequestFullScreen();
+    }
+    else if (gameCanvas.webkitRequestFullscreen) {
+        gameCanvas.webkitRequestFullscreen();
+    }
+    else if (gameCanvas.msRequestFullscreen) {
+        gameCanvas.msRequestFullscreen();
+    }
+    startSpotifyPlayer();
+});
 var currentTime = 0;
 var deltaTime = 0;
 var pastTime = (new Date()).getTime();

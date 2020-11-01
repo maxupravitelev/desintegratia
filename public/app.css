@@ -15,6 +15,10 @@ html, body {
     background-color: rgb(37, 37, 37);
 }
 
+#startFullscreen {
+    text-align: center;
+}
+
 @media only screen and (max-width: 800px) {
     #gameCanvas {
         left:0;
