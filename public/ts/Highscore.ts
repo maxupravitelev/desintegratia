@@ -17,22 +17,24 @@ const highscoreCount = () => {
 
 // fetch highscore from backend
 
-const getHighscoresFromBackend = () => {
-    fetch(url)
-        .then((response) => response.json())
-        .then((scores) => {
-            // todo: handle error when scores DB is empty
-            
-            scores.sort((b, a) => a.score - b.score)
-            globalScores = scores
-            console.log(scores)
-            bestHighScore = scores[0].score
-            console.log(scores[0].playerName)
-            if (gameState === 'INIT') {
-                loadImages();
-            }
-            
-        })
+const getHighscoresFromBackend = async () => {
+
+    const response = await (fetch(url));
+    const scores = await response.json();
+
+    scores.sort((b, a) => a.score - b.score)
+    globalScores = scores
+
+    console.log(scores)
+
+    bestHighScore = scores[0].score
+
+    console.log(scores[0].playerName)
+
+    if (gameState === 'INIT') {
+        loadImages();
+    }
+
 }
 
 
