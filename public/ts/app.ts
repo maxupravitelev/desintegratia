@@ -21,13 +21,26 @@ const resizeCanvas = () => {
 
 window.onload = () => {
     
+    // if (window.innerWidth < 800 ) {
+    //     resizeCanvas();
+    // }
+
     if (window.innerWidth < 800 ) {
-        // resizeCanvas();
+        let gameCanvas: any = document.getElementById("canvas");
+        if (gameCanvas.requestFullscreen) {
+            gameCanvas.requestFullscreen();
+        } else if (gameCanvas.mozRequestFullScreen) { /* Firefox */
+            gameCanvas.mozRequestFullScreen();
+        } else if (gameCanvas.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            gameCanvas.webkitRequestFullscreen();
+        } else if (gameCanvas.msRequestFullscreen) { /* IE/Edge */
+            gameCanvas.msRequestFullscreen();
+        }
     }
     
-    if (window.innerHeight > window.innerWidth) {
-        resizeCanvas();
-    }
+    // if (window.innerHeight > window.innerWidth) {
+    //     resizeCanvas();
+    // }
 
     getHighscoresFromBackend();
 

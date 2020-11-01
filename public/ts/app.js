@@ -13,9 +13,19 @@ const resizeCanvas = () => {
 };
 window.onload = () => {
     if (window.innerWidth < 800) {
-    }
-    if (window.innerHeight > window.innerWidth) {
-        resizeCanvas();
+        let gameCanvas = document.getElementById("canvas");
+        if (gameCanvas.requestFullscreen) {
+            gameCanvas.requestFullscreen();
+        }
+        else if (gameCanvas.mozRequestFullScreen) {
+            gameCanvas.mozRequestFullScreen();
+        }
+        else if (gameCanvas.webkitRequestFullscreen) {
+            gameCanvas.webkitRequestFullscreen();
+        }
+        else if (gameCanvas.msRequestFullscreen) {
+            gameCanvas.msRequestFullscreen();
+        }
     }
     getHighscoresFromBackend();
 };
