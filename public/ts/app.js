@@ -14,22 +14,21 @@ const resizeCanvas = () => {
 window.onload = () => {
     getHighscoresFromBackend();
 };
-document.getElementById("startFullscreen").addEventListener("click", () => {
-    let gameCanvas = document.getElementById("gameCanvas");
-    if (gameCanvas.requestFullscreen) {
-        gameCanvas.requestFullscreen();
-    }
-    else if (gameCanvas.mozRequestFullScreen) {
-        gameCanvas.mozRequestFullScreen();
-    }
-    else if (gameCanvas.webkitRequestFullscreen) {
-        gameCanvas.webkitRequestFullscreen();
-    }
-    else if (gameCanvas.msRequestFullscreen) {
-        gameCanvas.msRequestFullscreen();
-    }
-    startSpotifyPlayer();
-});
+// document.getElementById("startFullscreen").addEventListener("click", () => {
+//     let gameCanvas = document.getElementById("gameCanvas");
+//     if (gameCanvas.requestFullscreen) {
+//         gameCanvas.requestFullscreen();
+//     }
+//     else if (gameCanvas.mozRequestFullScreen) {
+//         gameCanvas.mozRequestFullScreen();
+//     }
+//     else if (gameCanvas.webkitRequestFullscreen) {
+//         gameCanvas.webkitRequestFullscreen();
+//     }
+//     else if (gameCanvas.msRequestFullscreen) {
+//         gameCanvas.msRequestFullscreen();
+//     }
+// });
 var currentTime = 0;
 var deltaTime = 0;
 var pastTime = (new Date()).getTime();
@@ -53,6 +52,19 @@ const gameloop = () => {
     }
     else {
         const startGame = () => {
+            let gameCanvas = document.getElementById("gameCanvas");
+            if (gameCanvas.requestFullscreen) {
+                gameCanvas.requestFullscreen();
+            }
+            else if (gameCanvas.mozRequestFullScreen) {
+                gameCanvas.mozRequestFullScreen();
+            }
+            else if (gameCanvas.webkitRequestFullscreen) {
+                gameCanvas.webkitRequestFullscreen();
+            }
+            else if (gameCanvas.msRequestFullscreen) {
+                gameCanvas.msRequestFullscreen();
+            }
             gameState = 'START';
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
@@ -83,6 +95,9 @@ const animate = () => {
     if (gameState === 'GAME_OVER') {
         frame = Math.floor(animationCounter % 1);
     }
+    if (key1.x <= (canvas.width / 2)) {
+        playerSprite.src = "image/angry.png";
+    }
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
     window.requestAnimationFrame(animate);
 };
@@ -92,8 +107,8 @@ const reset = () => {
     levelCounter = 0;
     endY = -500;
     alpsX = 0;
-    key1.x = canvas.width;
-    key1.y = 300;
+    key1.x = canvas.width - 10;
+    key1.y = 500;
     wall1.speed = 8;
     wall2.speed = 8;
     levelCounter = 0;

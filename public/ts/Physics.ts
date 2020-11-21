@@ -150,8 +150,8 @@ class keyClass {
     public goingUp: boolean;
     public moveKey: any;
     constructor() {
-        this.x = canvas.width + 300;
-        this.y = 300;
+        this.x = canvas.width - 10;
+        this.y = 500;
         this.speed = -0.2;
         this.goingUp = false;
 

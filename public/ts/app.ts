@@ -128,9 +128,9 @@ const animate = () => {
         frame = Math.floor(animationCounter % 1);
     }
 
-    // if (key1.x <= 340) {
-    //     playerSprite.src = "image/angry.png";
-    // }
+    if (key1.x <= (canvas.width / 2)) {
+        playerSprite.src = "image/angry.png";
+    }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
     window.requestAnimationFrame(animate);    
@@ -148,8 +148,8 @@ const reset = () => {
     endY = -500;
     alpsX = 0;
 
-    key1.x = canvas.width;
-    key1.y = 300;
+    key1.x = canvas.width - 10;
+    key1.y = 500;
 
     wall1.speed = 8;
     wall2.speed = 8;
