@@ -6,6 +6,7 @@ let alps = new Image();
 let key = new Image();
 let wall_sprite = new Image();
 let coin_sprite = new Image();
+let startScreen = new Image();
 
 let picsToLoad = 0;
 
@@ -32,7 +33,7 @@ const loadImages = () => {
         { varName: key, theFile: "image/key.png" },
         { varName: wall_sprite, theFile: "image/wall.png" },
         { varName: coin_sprite, theFile: "image/all_coins.png" },
-        { varName: coin_sprite, theFile: "start_screen.png" },
+        { varName: startScreen, theFile: "image/start_screen.png" },
 
     ];
 

@@ -15,9 +15,7 @@ const getHighscoresFromBackend = async () => {
     const scores = await response.json();
     scores.sort((b, a) => a.score - b.score);
     globalScores = scores;
-    console.log(scores);
     bestHighScore = scores[0].score;
-    console.log(scores[0].playerName);
     if (gameState === 'INIT') {
         loadImages();
     }

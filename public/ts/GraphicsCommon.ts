@@ -4,6 +4,10 @@ const colorRect = (topLeftX: number, topLeftY: number, boxWidth: number, boxHeig
 }
 
 const drawAll = () => {
+    // if (gameState = 'INIT') {
+    //     canvasContext.drawImage(startScreen, 0, 0);
+    // } else {
+    
     colorRect(0, 0, canvas.width, canvas.height);
 
     canvasContext.drawImage(alps, alpsX, 0);
@@ -58,4 +62,5 @@ const drawAll = () => {
 
     // canvasContext.fillText("Jump = Space/Mouse/Touch", 50, 50);
     // canvasContext.fillText("New Game = Space/Mouse/Touch after Game Over", 50, 70);
+// }
 }

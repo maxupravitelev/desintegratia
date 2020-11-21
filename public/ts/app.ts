@@ -58,6 +58,7 @@ var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
 const gameloop = () => {
+    console.log(gameState)
     if (!(gameState === 'INIT')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
@@ -67,19 +68,37 @@ const gameloop = () => {
             inputHandling();
             animationCounter = animationCounter + 0.1;
             coinAnimationCounter = coinAnimationCounter + 0.2;
-
         }
         drawAll();
         pastTime = currentTime;
         requestAnimationFrame(gameloop);
+    } else {
+
+        const startGame = () => {
+            gameState = 'START'
+            document.removeEventListener("mousedown", startGame);
+            document.removeEventListener("keydown", startGame);
+            document.removeEventListener("touchstart", startGame);
+
+        }
+
+        canvasContext.drawImage(startScreen, 0, 0);
+
+        document.addEventListener("keydown", startGame);
+        document.addEventListener("mousedown", startGame);
+        document.addEventListener("touchstart", startGame);
+        requestAnimationFrame(gameloop);
+        window.requestAnimationFrame(animate);    
+
     }
 }
 
 
+
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
-    window.requestAnimationFrame(animate);
-    gameState = 'START'
+    // window.requestAnimationFrame(animate);
+    
 }
 
 const keyPressed = (evt) => {
@@ -89,6 +108,9 @@ const keyPressed = (evt) => {
 }
 
 const animate = () => {
+    if (gameState === 'START') {
+
+    
     let coin_frame = Math.floor(coinAnimationCounter % 8);
     if (gameState === 'GAME_OVER') {
         coin_frame = Math.floor(coinAnimationCounter % 1);
@@ -109,6 +131,7 @@ const animate = () => {
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
     window.requestAnimationFrame(animate);    
+    }
 }
 
 

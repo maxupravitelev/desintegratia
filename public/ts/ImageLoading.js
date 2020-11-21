@@ -6,6 +6,7 @@ let alps = new Image();
 let key = new Image();
 let wall_sprite = new Image();
 let coin_sprite = new Image();
+let startScreen = new Image();
 let picsToLoad = 0;
 const countLoadedImagesAndLaunchIfReady = () => {
     picsToLoad--;
@@ -26,7 +27,8 @@ const loadImages = () => {
         { varName: alps, theFile: "image/alps_large.png" },
         { varName: key, theFile: "image/key.png" },
         { varName: wall_sprite, theFile: "image/wall.png" },
-        { varName: coin_sprite, theFile: "image/all_coins.png" }
+        { varName: coin_sprite, theFile: "image/all_coins.png" },
+        { varName: startScreen, theFile: "image/start_screen.png" },
     ];
     picsToLoad = imageList.length;
     for (let i = 0; i < imageList.length; i++) {
