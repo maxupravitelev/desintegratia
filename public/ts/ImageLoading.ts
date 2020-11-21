@@ -31,7 +31,9 @@ const loadImages = () => {
         { varName: alps, theFile: "image/alps_large.png" },
         { varName: key, theFile: "image/key.png" },
         { varName: wall_sprite, theFile: "image/wall.png" },
-        { varName: coin_sprite, theFile: "image/all_coins.png" }
+        { varName: coin_sprite, theFile: "image/all_coins.png" },
+        { varName: coin_sprite, theFile: "start_screen.png" },
+
     ];
 
     picsToLoad = imageList.length;
