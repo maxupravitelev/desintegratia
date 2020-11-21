@@ -72,6 +72,7 @@ const gameloop = () => {
         drawAll();
         pastTime = currentTime;
         requestAnimationFrame(gameloop);
+        window.requestAnimationFrame(animate); 
     } else {
 
         const startGame = () => {
@@ -88,7 +89,7 @@ const gameloop = () => {
         document.addEventListener("mousedown", startGame);
         document.addEventListener("touchstart", startGame);
         requestAnimationFrame(gameloop);
-        window.requestAnimationFrame(animate);    
+        // window.requestAnimationFrame(animate);    
 
     }
 }
@@ -109,7 +110,7 @@ const keyPressed = (evt) => {
 
 const animate = () => {
     if (gameState === 'START') {
-
+    
     
     let coin_frame = Math.floor(coinAnimationCounter % 8);
     if (gameState === 'GAME_OVER') {
@@ -130,6 +131,7 @@ const animate = () => {
     // }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
+    // console.log("yo")
     window.requestAnimationFrame(animate);    
     }
 }

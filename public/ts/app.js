@@ -49,6 +49,7 @@ const gameloop = () => {
         drawAll();
         pastTime = currentTime;
         requestAnimationFrame(gameloop);
+        window.requestAnimationFrame(animate);
     }
     else {
         const startGame = () => {
@@ -62,7 +63,6 @@ const gameloop = () => {
         document.addEventListener("mousedown", startGame);
         document.addEventListener("touchstart", startGame);
         requestAnimationFrame(gameloop);
-        window.requestAnimationFrame(animate);
     }
 };
 const imageLoadingDoneSoStartGame = () => {
