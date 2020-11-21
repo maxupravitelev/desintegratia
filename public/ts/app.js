@@ -74,19 +74,17 @@ const keyPressed = (evt) => {
     }
 };
 const animate = () => {
-    if (gameState === 'START') {
-        let coin_frame = Math.floor(coinAnimationCounter % 8);
-        if (gameState === 'GAME_OVER') {
-            coin_frame = Math.floor(coinAnimationCounter % 1);
-        }
-        canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
-        let frame = Math.floor(animationCounter % 2);
-        if (gameState === 'GAME_OVER') {
-            frame = Math.floor(animationCounter % 1);
-        }
-        canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
-        window.requestAnimationFrame(animate);
+    let coin_frame = Math.floor(coinAnimationCounter % 8);
+    if (gameState === 'GAME_OVER') {
+        coin_frame = Math.floor(coinAnimationCounter % 1);
     }
+    canvasContext.drawImage(coin_sprite, coin_frame * coin_frame_width, 0, coin_frame_width, coin_frame_height, coin1.x, coin1.y, coin_frame_width * 2, coin_frame_height * 2);
+    let frame = Math.floor(animationCounter % 2);
+    if (gameState === 'GAME_OVER') {
+        frame = Math.floor(animationCounter % 1);
+    }
+    canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
+    window.requestAnimationFrame(animate);
 };
 const reset = () => {
     playerSprite.src = "image/player-sprite.png";
