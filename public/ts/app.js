@@ -37,6 +37,19 @@ const gameloop = () => {
     else {
         canvasContext.drawImage(startScreen, 0, 0);
         const startGame = () => {
+            let gameCanvas = document.getElementById("gameCanvas");
+            if (gameCanvas.requestFullscreen) {
+                gameCanvas.requestFullscreen();
+            }
+            else if (gameCanvas.mozRequestFullScreen) {
+                gameCanvas.mozRequestFullScreen();
+            }
+            else if (gameCanvas.webkitRequestFullscreen) {
+                gameCanvas.webkitRequestFullscreen();
+            }
+            else if (gameCanvas.msRequestFullscreen) {
+                gameCanvas.msRequestFullscreen();
+            }
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
             pastTime = (new Date()).getTime();
@@ -44,6 +57,19 @@ const gameloop = () => {
             window.requestAnimationFrame(animate);
         };
         const startGameTouch = (event) => {
+            let gameCanvas = document.getElementById("gameCanvas");
+            if (gameCanvas.requestFullscreen) {
+                gameCanvas.requestFullscreen();
+            }
+            else if (gameCanvas.mozRequestFullScreen) {
+                gameCanvas.mozRequestFullScreen();
+            }
+            else if (gameCanvas.webkitRequestFullscreen) {
+                gameCanvas.webkitRequestFullscreen();
+            }
+            else if (gameCanvas.msRequestFullscreen) {
+                gameCanvas.msRequestFullscreen();
+            }
             document.removeEventListener("touchstart", startGame);
             pastTime = (new Date()).getTime();
             gameState = 'START';

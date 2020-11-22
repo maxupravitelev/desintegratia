@@ -65,7 +65,19 @@ const gameloop = () => {
 
 
         const startGame = () => {
-            
+            let gameCanvas = document.getElementById("gameCanvas");
+            if (gameCanvas.requestFullscreen) {
+                gameCanvas.requestFullscreen();
+            }
+            else if (gameCanvas.mozRequestFullScreen) {
+                gameCanvas.mozRequestFullScreen();
+            }
+            else if (gameCanvas.webkitRequestFullscreen) {
+                gameCanvas.webkitRequestFullscreen();
+            }
+            else if (gameCanvas.msRequestFullscreen) {
+                gameCanvas.msRequestFullscreen();
+            }
             // document.removeEventListener("touchstart", startGame);
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
@@ -78,7 +90,19 @@ const gameloop = () => {
 
         const startGameTouch = (event) => {
             // event.preventDefault();
-
+            let gameCanvas = document.getElementById("gameCanvas");
+            if (gameCanvas.requestFullscreen) {
+                gameCanvas.requestFullscreen();
+            }
+            else if (gameCanvas.mozRequestFullScreen) {
+                gameCanvas.mozRequestFullScreen();
+            }
+            else if (gameCanvas.webkitRequestFullscreen) {
+                gameCanvas.webkitRequestFullscreen();
+            }
+            else if (gameCanvas.msRequestFullscreen) {
+                gameCanvas.msRequestFullscreen();
+            }
             document.removeEventListener("touchstart", startGame);
             // document.removeEventListener("mousedown", startGame);
             // document.removeEventListener("keydown", startGame);
