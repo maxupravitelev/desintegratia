@@ -36,24 +36,24 @@ const gameloop = () => {
     }
     else {
         const startGame = () => {
-            document.removeEventListener("touchstart", startGame);
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };
         const startGameTouch = (event) => {
-            event.preventDefault();
             document.removeEventListener("touchstart", startGame);
-            document.removeEventListener("mousedown", startGame);
-            document.removeEventListener("keydown", startGame);
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };
         canvasContext.drawImage(startScreen, 0, 0);
-        document.addEventListener("keydown", startGame);
-        document.addEventListener("touchstart", startGameTouch);
-        document.addEventListener("mousedown", startGame);
+        if (window.innerHeight > window.innerWidth) {
+            document.addEventListener("touchstart", startGameTouch, { passive: false });
+        }
+        else {
+            document.addEventListener("keydown", startGame, { passive: false });
+            document.addEventListener("mousedown", startGame, { passive: false });
+        }
         requestAnimationFrame(gameloop);
     }
 };
