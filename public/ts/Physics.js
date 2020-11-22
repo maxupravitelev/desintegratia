@@ -56,7 +56,6 @@ class wallClass {
             }
         };
         this.moveWall = () => {
-            console.log(this.x);
             if (this.x >= 0 - this.width) {
                 this.x -= this.speed * speedFactor;
             }

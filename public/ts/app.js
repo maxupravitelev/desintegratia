@@ -37,54 +37,34 @@ const gameloop = () => {
     else {
         canvasContext.drawImage(startScreen, 0, 0);
         const startGame = () => {
-            let gameCanvas = document.getElementById("gameCanvas");
-            if (gameCanvas.requestFullscreen) {
-                gameCanvas.requestFullscreen();
-            }
-            else if (gameCanvas.mozRequestFullScreen) {
-                gameCanvas.mozRequestFullScreen();
-            }
-            else if (gameCanvas.webkitRequestFullscreen) {
-                gameCanvas.webkitRequestFullscreen();
-            }
-            else if (gameCanvas.msRequestFullscreen) {
-                gameCanvas.msRequestFullscreen();
-            }
+            document.removeEventListener("touchstart", startGame);
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
             pastTime = (new Date()).getTime();
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };
-        const startGameTouch = (event) => {
-            let gameCanvas = document.getElementById("gameCanvas");
-            if (gameCanvas.requestFullscreen) {
-                gameCanvas.requestFullscreen();
-            }
-            else if (gameCanvas.mozRequestFullScreen) {
-                gameCanvas.mozRequestFullScreen();
-            }
-            else if (gameCanvas.webkitRequestFullscreen) {
-                gameCanvas.webkitRequestFullscreen();
-            }
-            else if (gameCanvas.msRequestFullscreen) {
-                gameCanvas.msRequestFullscreen();
-            }
-            document.removeEventListener("touchstart", startGame);
-            pastTime = (new Date()).getTime();
-            gameState = 'START';
-            window.requestAnimationFrame(animate);
-        };
-        if (window.innerHeight > window.innerWidth) {
-            document.addEventListener("touchstart", startGameTouch, { passive: false });
-        }
-        else {
-            document.addEventListener("keydown", startGame, { passive: false });
-            document.addEventListener("mousedown", startGame, { passive: false });
-        }
+        document.addEventListener("touchstart", startGame);
+        document.addEventListener("keydown", startGame);
+        document.addEventListener("mousedown", startGame);
         requestAnimationFrame(gameloop);
     }
 };
+document.getElementById("startFullscreen").addEventListener("click", () => {
+    let gameCanvas = document.getElementById("gameCanvas");
+    if (gameCanvas.requestFullscreen) {
+        gameCanvas.requestFullscreen();
+    }
+    else if (gameCanvas.mozRequestFullScreen) {
+        gameCanvas.mozRequestFullScreen();
+    }
+    else if (gameCanvas.webkitRequestFullscreen) {
+        gameCanvas.webkitRequestFullscreen();
+    }
+    else if (gameCanvas.msRequestFullscreen) {
+        gameCanvas.msRequestFullscreen();
+    }
+});
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
     currentPlayerSprite = playerSprite;
