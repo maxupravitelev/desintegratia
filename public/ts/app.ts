@@ -43,8 +43,9 @@ var deltaTime:number = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
-const gameloop = () => {
 
+const gameloop = () => {
+    // console.log(wall1.x)
     if (!(gameState === 'INIT')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
@@ -60,11 +61,16 @@ const gameloop = () => {
         requestAnimationFrame(gameloop);
     } else {
 
+        canvasContext.drawImage(startScreen, 0, 0);
+
+
         const startGame = () => {
             
             // document.removeEventListener("touchstart", startGame);
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
+            initMovingObjects();
+
             gameState = 'START'
             window.requestAnimationFrame(animate); 
 
@@ -81,7 +87,7 @@ const gameloop = () => {
 
         }
 
-        canvasContext.drawImage(startScreen, 0, 0);
+        
 
         if (window.innerHeight > window.innerWidth) {
             document.addEventListener("touchstart", startGameTouch, { passive: false });
@@ -92,7 +98,6 @@ const gameloop = () => {
         }
 
         requestAnimationFrame(gameloop);
-        // window.requestAnimationFrame(animate);    
 
     }
 }
@@ -101,7 +106,6 @@ const gameloop = () => {
 
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
-    // window.requestAnimationFrame(animate);
     currentPlayerSprite = playerSprite;
 
     

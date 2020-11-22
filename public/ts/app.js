@@ -35,9 +35,11 @@ const gameloop = () => {
         requestAnimationFrame(gameloop);
     }
     else {
+        canvasContext.drawImage(startScreen, 0, 0);
         const startGame = () => {
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
+            initMovingObjects();
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };
@@ -46,7 +48,6 @@ const gameloop = () => {
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };
-        canvasContext.drawImage(startScreen, 0, 0);
         if (window.innerHeight > window.innerWidth) {
             document.addEventListener("touchstart", startGameTouch, { passive: false });
         }

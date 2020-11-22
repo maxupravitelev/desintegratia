@@ -27,6 +27,7 @@ const beginLoadingImage = (imgVar: object, fileName: string) => {
 
 const loadImages = () => {
     let imageList = [
+        { varName: startScreen, theFile: "image/start_screen.png" },
         { varName: playerSprite, theFile: "image/player-sprite.png" },
         { varName: playerAngrySprite, theFile: "image/angry.png" },
         { varName: end, theFile: "image/end.png" },
@@ -35,8 +36,8 @@ const loadImages = () => {
         { varName: alps, theFile: "image/alps_large.png" },
         { varName: key, theFile: "image/key.png" },
         { varName: wall_sprite, theFile: "image/wall.png" },
-        { varName: coin_sprite, theFile: "image/all_coins.png" },
-        { varName: startScreen, theFile: "image/start_screen.png" },
+        { varName: coin_sprite, theFile: "image/all_coins.png" }
+        
 
     ];
 

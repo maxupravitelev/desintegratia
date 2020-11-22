@@ -13,6 +13,30 @@ let levelCounter:number = 0;
 
 let currentLevel:number = 1;
 
+let movingObjectsSpeedAtStart = 8; 
+
+let wall1;
+let wall2;
+
+let wallDistance:number = 500;
+
+let coin1;
+
+const initMovingObjects = () => {
+    
+    wall1 = new wallClass();
+    wall2 = new wallClass();
+
+    coin1 = new coinClass();
+
+    coin1.x = 900;
+    coin1.y = 270;
+
+    wall2.x = wall1.x + wallDistance;
+    wall2.height = 130;
+    wall2.y = groundY - wall2.height;
+}
+
 const moveAll = () => {
 
     if (gameState == 'START') {
@@ -57,7 +81,7 @@ class wallClass {
         this.height = 160;
         this.width = 55;
         this.y = groundY - this.height;
-        this.speed = 8;
+        this.speed = movingObjectsSpeedAtStart;
 
         this.collision = function () {
             if (this.x <= player.x + frame_width / 2 - 15 && player.jumping == false) {
@@ -83,6 +107,7 @@ class wallClass {
         };
 
         this.moveWall = () => {
+            console.log(this.x)
             if (this.x >= 0 - this.width) {
                 this.x -= this.speed * speedFactor;
 
@@ -97,15 +122,11 @@ class wallClass {
 
 
 
-let wall1 = new wallClass();
-let wall2 = new wallClass();
-
-let wallDistance:number = 500;
 
 
-wall2.x = wall1.x + wallDistance;
-wall2.height = 130;
-wall2.y = groundY - wall2.height;
+
+
+
 
 
 /////////////////// object player
@@ -184,7 +205,7 @@ class coinClass {
         this.x = canvas.width;
         this.y = 300;
         this.width = 16
-        this.speed = wall1.speed;
+        this.speed = movingObjectsSpeedAtStart;
 
 
         // let x: number = canvas.width;
@@ -219,9 +240,7 @@ class coinClass {
     }
 }
 
-let coin1 = new coinClass();
-coin1.x = 900;
-coin1.y = 270;
+
 
 // let coin2 = new coinClass();
 // coin2.x = 1000;
