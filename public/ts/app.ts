@@ -61,10 +61,11 @@ const gameloop = () => {
     } else {
 
         const startGame = () => {
-            gameState = 'START'
+            
+            document.removeEventListener("touchstart", startGame);
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
-            document.removeEventListener("touchstart", startGame);
+            gameState = 'START'
             window.requestAnimationFrame(animate); 
 
         }
