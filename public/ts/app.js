@@ -14,21 +14,7 @@ const resizeCanvas = () => {
 window.onload = () => {
     getHighscoresFromBackend();
 };
-// document.getElementById("startFullscreen").addEventListener("click", () => {
-//     let gameCanvas = document.getElementById("gameCanvas");
-//     if (gameCanvas.requestFullscreen) {
-//         gameCanvas.requestFullscreen();
-//     }
-//     else if (gameCanvas.mozRequestFullScreen) {
-//         gameCanvas.mozRequestFullScreen();
-//     }
-//     else if (gameCanvas.webkitRequestFullscreen) {
-//         gameCanvas.webkitRequestFullscreen();
-//     }
-//     else if (gameCanvas.msRequestFullscreen) {
-//         gameCanvas.msRequestFullscreen();
-//     }
-// });
+
 var currentTime = 0;
 var deltaTime = 0;
 var pastTime = (new Date()).getTime();
@@ -68,7 +54,7 @@ const gameloop = () => {
             gameState = 'START';
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
-            document.removeEventListener("touchstart", startGame);
+            document.removeEventListener("touchstart", startGame, false);
         };
         canvasContext.drawImage(startScreen, 0, 0);
         document.addEventListener("keydown", startGame);
