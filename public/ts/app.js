@@ -14,13 +14,11 @@ const resizeCanvas = () => {
 window.onload = () => {
     getHighscoresFromBackend();
 };
-
 var currentTime = 0;
 var deltaTime = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond = 1 / 60;
 const gameloop = () => {
-    console.log(gameState);
     if (!(gameState === 'INIT')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
@@ -38,23 +36,10 @@ const gameloop = () => {
     }
     else {
         const startGame = () => {
-            let gameCanvas = document.getElementById("gameCanvas");
-            if (gameCanvas.requestFullscreen) {
-                gameCanvas.requestFullscreen();
-            }
-            else if (gameCanvas.mozRequestFullScreen) {
-                gameCanvas.mozRequestFullScreen();
-            }
-            else if (gameCanvas.webkitRequestFullscreen) {
-                gameCanvas.webkitRequestFullscreen();
-            }
-            else if (gameCanvas.msRequestFullscreen) {
-                gameCanvas.msRequestFullscreen();
-            }
             gameState = 'START';
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
-            document.removeEventListener("touchstart", startGame, false);
+            document.removeEventListener("touchstart", startGame);
         };
         canvasContext.drawImage(startScreen, 0, 0);
         document.addEventListener("keydown", startGame);
@@ -81,7 +66,7 @@ const animate = () => {
     if (gameState === 'GAME_OVER') {
         frame = Math.floor(animationCounter % 1);
     }
-    if (key1.x <= (canvas.width / 2)) {
+    if (key1.x <= (keyStopX)) {
         playerSprite.src = "image/angry.png";
     }
     canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);

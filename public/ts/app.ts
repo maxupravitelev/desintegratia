@@ -35,30 +35,13 @@ window.onload = () => {
 
 };
 
-document.getElementById("startFullscreen")!.addEventListener("click", () => {
-
-    let gameCanvas: any = document.getElementById("gameCanvas");
-  
-      if (gameCanvas.requestFullscreen) {
-        gameCanvas.requestFullscreen();
-      } else if (gameCanvas.mozRequestFullScreen) { /* Firefox */
-        gameCanvas.mozRequestFullScreen();
-      } else if (gameCanvas.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-        gameCanvas.webkitRequestFullscreen();
-      } else if (gameCanvas.msRequestFullscreen) { /* IE/Edge */
-        gameCanvas.msRequestFullscreen();
-      }
-  
-    startSpotifyPlayer();
-  });
-
 var currentTime:number = 0;
 var deltaTime:number = 0;
 var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
 const gameloop = () => {
-    console.log(gameState)
+
     if (!(gameState === 'INIT')) {
         currentTime = (new Date()).getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);           // Source: https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/
@@ -128,7 +111,8 @@ const animate = () => {
         frame = Math.floor(animationCounter % 1);
     }
 
-    if (key1.x <= (canvas.width / 2)) {
+
+    if (key1.x <= (keyStopX)) {
         playerSprite.src = "image/angry.png";
     }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
