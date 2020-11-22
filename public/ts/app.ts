@@ -70,10 +70,21 @@ const gameloop = () => {
 
         }
 
+        const startGameTouch = (event) => {
+            event.preventDefault();
+
+            document.removeEventListener("touchstart", startGame);
+            document.removeEventListener("mousedown", startGame);
+            document.removeEventListener("keydown", startGame);
+            gameState = 'START'
+            window.requestAnimationFrame(animate); 
+
+        }
+
         canvasContext.drawImage(startScreen, 0, 0);
 
         document.addEventListener("keydown", startGame);
-        document.addEventListener("touchstart", startGame);
+        document.addEventListener("touchstart", startGameTouch);
         document.addEventListener("mousedown", startGame);
         requestAnimationFrame(gameloop);
         // window.requestAnimationFrame(animate);    
