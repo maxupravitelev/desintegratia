@@ -7,6 +7,7 @@ let coin_frame_height = 24;
 let canvas = document.getElementById("gameCanvas");
 let canvasContext = canvas.getContext("2d");
 let gameState = 'INIT';
+let currentPlayerSprite;
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = 896;
@@ -50,6 +51,7 @@ const gameloop = () => {
 };
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
+    currentPlayerSprite = playerSprite;
 };
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
@@ -66,14 +68,14 @@ const animate = () => {
     if (gameState === 'GAME_OVER') {
         frame = Math.floor(animationCounter % 1);
     }
-    if (key1.x <= (keyStopX)) {
-        playerSprite.src = "image/angry.png";
+    if (key1.x <= (keyStopX - 10)) {
+        currentPlayerSprite = playerAngrySprite;
     }
-    canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
+    canvasContext.drawImage(currentPlayerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
     window.requestAnimationFrame(animate);
 };
 const reset = () => {
-    playerSprite.src = "image/player-sprite.png";
+    currentPlayerSprite = playerSprite;
     highscore = 0;
     levelCounter = 0;
     endY = -500;

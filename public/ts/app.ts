@@ -12,7 +12,10 @@ let canvasContext: any = canvas.getContext("2d");
 
 let gameState: string = 'INIT'
 
+let currentPlayerSprite;
+
 // window.addEventListener("resize", resizeCanvas, false);
+
 
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
@@ -82,6 +85,8 @@ const gameloop = () => {
 const imageLoadingDoneSoStartGame = () => {
     requestAnimationFrame(gameloop);
     // window.requestAnimationFrame(animate);
+    currentPlayerSprite = playerSprite;
+
     
 }
 
@@ -90,6 +95,9 @@ const keyPressed = (evt) => {
         (gameState === 'GAME_OVER') ? reset() : jump();
     }
 }
+
+
+
 
 const animate = () => {
     // if (gameState === 'START') {
@@ -111,12 +119,13 @@ const animate = () => {
         frame = Math.floor(animationCounter % 1);
     }
 
+    
 
-    if (key1.x <= (keyStopX)) {
-        playerSprite.src = "image/angry.png";
+    if (key1.x <= (keyStopX - 10)) {
+        currentPlayerSprite = playerAngrySprite;
     }
     //  canvasContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-    canvasContext.drawImage(playerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
+    canvasContext.drawImage(currentPlayerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2 );
     window.requestAnimationFrame(animate);    
     // }
 }
@@ -124,7 +133,7 @@ const animate = () => {
 
 
 const reset = () => {
-    playerSprite.src = "image/player-sprite.png";
+    currentPlayerSprite = playerSprite;
 
     highscore = 0;
     levelCounter = 0;

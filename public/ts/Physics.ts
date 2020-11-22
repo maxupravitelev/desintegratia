@@ -240,15 +240,15 @@ const speedUp = () => {
         speedFactor = 1.4;
     }
     if (highscore >= 1500) {
-        speedFactor = 1.6;
+        speedFactor = 1.5;
     }
     if (highscore >= 2000) {
-        speedFactor = 1.8;
+        speedFactor = 1.6;
     }
     if (highscore >= 2500) {
-        speedFactor = 1.8;
+        speedFactor = 1.7;
     }
     if (highscore >= 3000) {
-        speedFactor = 2.0;
+        speedFactor = 1.8;
     }
 }

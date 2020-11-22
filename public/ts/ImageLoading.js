@@ -1,4 +1,5 @@
 let playerSprite = new Image();
+let playerAngrySprite = new Image();
 let ground = new Image();
 let end = new Image();
 let ground_stripe = new Image();
@@ -21,6 +22,7 @@ const beginLoadingImage = (imgVar, fileName) => {
 const loadImages = () => {
     let imageList = [
         { varName: playerSprite, theFile: "image/player-sprite.png" },
+        { varName: playerAngrySprite, theFile: "image/angry.png" },
         { varName: end, theFile: "image/end.png" },
         { varName: ground, theFile: "image/ground.png" },
         { varName: ground_stripe, theFile: "image/ground_stripe.png" },
