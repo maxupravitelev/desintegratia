@@ -82,6 +82,7 @@ const gameloop = () => {
             document.removeEventListener("touchstart", startGame);
             // document.removeEventListener("mousedown", startGame);
             // document.removeEventListener("keydown", startGame);
+            pastTime = (new Date()).getTime();
             gameState = 'START'
             window.requestAnimationFrame(animate); 
 
