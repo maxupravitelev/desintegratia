@@ -39,7 +39,7 @@ const gameloop = () => {
         const startGame = () => {
             document.removeEventListener("mousedown", startGame);
             document.removeEventListener("keydown", startGame);
-            initMovingObjects();
+            pastTime = (new Date()).getTime();
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };

@@ -15,29 +15,11 @@ let currentLevel:number = 1;
 
 let movingObjectsSpeedAtStart = 8; 
 
-let wall1;
-let wall2;
 
-let wallDistance:number = 500;
-
-let coin1;
-
-const initMovingObjects = () => {
-    
-    wall1 = new wallClass();
-    wall2 = new wallClass();
-
-    coin1 = new coinClass();
-
-    coin1.x = 900;
-    coin1.y = 270;
-
-    wall2.x = wall1.x + wallDistance;
-    wall2.height = 130;
-    wall2.y = groundY - wall2.height;
-}
 
 const moveAll = () => {
+
+
 
     if (gameState == 'START') {
         key1.moveKey();
@@ -271,3 +253,22 @@ const speedUp = () => {
         speedFactor = 1.8;
     }
 }
+
+
+// create obstacles and collectables
+
+let wallDistance:number = 500;
+
+
+
+let wall1 = new wallClass();
+let wall2 = new wallClass();
+
+let coin1 = new coinClass();
+
+coin1.x = 900;
+coin1.y = 270;
+
+wall2.x = wall1.x + wallDistance;
+wall2.height = 130;
+wall2.y = groundY - wall2.height;
