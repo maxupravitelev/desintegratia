@@ -72,8 +72,8 @@ const gameloop = () => {
         canvasContext.drawImage(startScreen, 0, 0);
 
         document.addEventListener("keydown", startGame);
-        document.addEventListener("mousedown", startGame);
         document.addEventListener("touchstart", startGame);
+        document.addEventListener("mousedown", startGame);
         requestAnimationFrame(gameloop);
         // window.requestAnimationFrame(animate);    
 
