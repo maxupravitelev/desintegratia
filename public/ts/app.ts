@@ -76,7 +76,6 @@ const gameloop = () => {
         }
 
             document.addEventListener("touchstart", startGame);
-
             document.addEventListener("keydown", startGame);
             document.addEventListener("mousedown", startGame);
 

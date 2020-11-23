@@ -110,7 +110,7 @@ class wallClass {
 
 
 
-/////////////////// object player
+/////////////////// player object
 
 let player = {
     jumping: true,
@@ -144,7 +144,7 @@ const gravity = () => {
 
 ///////////////////////// key
 
-let keyStopX = 270;
+let keyStopX = 280;
 
 class keyClass {
     public x: number;
@@ -167,7 +167,7 @@ class keyClass {
             }
             else if (gameState === 'START' && this.x <= keyStopX) {
                 this.x += -0.02;
-                this.y += Math.sin(this.x / 0.5) * 1;
+                this.y += Math.sin(this.x / 0.5) * 0.5;
             }
         };
     }

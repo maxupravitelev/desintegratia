@@ -89,7 +89,7 @@ const gravity = () => {
         player.y_velocity = 0;
     }
 };
-let keyStopX = 270;
+let keyStopX = 280;
 class keyClass {
     constructor() {
         this.x = canvas.width - 10;
@@ -103,7 +103,7 @@ class keyClass {
             }
             else if (gameState === 'START' && this.x <= keyStopX) {
                 this.x += -0.02;
-                this.y += Math.sin(this.x / 0.5) * 1;
+                this.y += Math.sin(this.x / 0.5) * 0.5;
             }
         };
     }
