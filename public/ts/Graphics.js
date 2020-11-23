@@ -2,6 +2,10 @@ const colorRect = (topLeftX, topLeftY, boxWidth, boxHeight, fillColor) => {
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
 };
+colorRect(0, 0, canvas.width, canvas.height, "black");
+canvasContext.fillStyle = "white";
+canvasContext.font = "bold 15px Arial";
+canvasContext.fillText("game is loading...", 15, 60);
 const drawAll = () => {
     canvasContext.drawImage(alps, alpsX, 0);
     canvasContext.drawImage(key, key1.x, key1.y);

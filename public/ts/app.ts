@@ -44,6 +44,8 @@ var pastTime = (new Date()).getTime();
 var framesPerSecond:number = 1 / 60;
 
 
+
+
 const gameloop = () => {
     // console.log(wall1.x)
     if (!(gameState === 'INIT')) {

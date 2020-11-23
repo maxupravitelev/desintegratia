@@ -3,6 +3,12 @@ const colorRect = (topLeftX: number, topLeftY: number, boxWidth: number, boxHeig
     canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }
 
+// loadig screen
+colorRect(0, 0, canvas.width, canvas.height, "black");
+canvasContext.fillStyle = "white";
+canvasContext.font = "bold 15px Arial";
+canvasContext.fillText("game is loading...", 15, 60);
+
 const drawAll = () => {
     // if (gameState = 'INIT') {
     //     canvasContext.drawImage(startScreen, 0, 0);
