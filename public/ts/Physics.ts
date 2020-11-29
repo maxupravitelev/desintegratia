@@ -15,11 +15,7 @@ let currentLevel:number = 1;
 
 let movingObjectsSpeedAtStart = 8; 
 
-
-
 const moveAll = () => {
-
-
 
     if (gameState == 'START') {
         key1.moveKey();
@@ -47,7 +43,6 @@ const moveAll = () => {
 }
 
 ///////////////////////// walls
-
 
 class wallClass {
     public x: number;
@@ -100,14 +95,6 @@ class wallClass {
         };
     }
 }
-
-
-
-
-
-
-
-
 
 
 /////////////////// player object
@@ -203,8 +190,6 @@ const speedUp = () => {
 let key1 = new keyClass();
 
 let wallDistance:number = 500;
-
-
 
 let wall1 = new wallClass();
 let wall2 = new wallClass();
