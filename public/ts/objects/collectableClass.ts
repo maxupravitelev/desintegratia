@@ -11,15 +11,6 @@ class collectableClass {
         this.width = 16
         this.speed = speed;
 
-
-        // let x: number = canvas.width;
-
-        // let y: number = 300;
-
-        // let width: number = 16;
-
-        // let speed: number = wall1.speed;
-
         this.move = () => {
             if (gameState === 'START') {
                 this.x -= this.speed;
@@ -46,10 +37,3 @@ class collectableClass {
 
 
 
-// let coin2 = new coinClass();
-// coin2.x = 1000;
-// coin2.y = 280;
-
-// let coin3 = new coinClass();
-// coin3.x = 1300;
-// coin3.y = 290;

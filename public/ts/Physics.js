@@ -108,28 +108,6 @@ class keyClass {
         };
     }
 }
-let key1 = new keyClass();
-class coinClass {
-    constructor() {
-        this.x = canvas.width;
-        this.y = 300;
-        this.width = 16;
-        this.speed = movingObjectsSpeedAtStart;
-        this.moveCoin = () => {
-            if (gameState === 'START') {
-                this.x -= this.speed;
-            }
-            if (this.x < 0 - this.width) {
-                this.x = 850;
-            }
-            if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true)) {
-                highscore += 400;
-                levelCounter += 400;
-                this.x += 900;
-            }
-        };
-    }
-}
 const speedUp = () => {
     if (highscore >= 400) {
         speedFactor = 1.2;
@@ -150,10 +128,11 @@ const speedUp = () => {
         speedFactor = 1.8;
     }
 };
+let key1 = new keyClass();
 let wallDistance = 500;
 let wall1 = new wallClass();
 let wall2 = new wallClass();
-let coin1 = new collectableClass(900, 270, 8);
+let coin1 = new collectableClass(900, 270, movingObjectsSpeedAtStart);
 wall2.x = wall1.x + wallDistance;
 wall2.height = 130;
 wall2.y = groundY - wall2.height;

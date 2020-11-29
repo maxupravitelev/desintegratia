@@ -173,54 +173,6 @@ class keyClass {
     }
 }
 
-let key1 = new keyClass();
-
-
-class coinClass {
-    public x: number;
-    public y: number;
-    public width: number;
-    public speed: number;
-    public moveCoin: any;
-    constructor() {
-        this.x = canvas.width;
-        this.y = 300;
-        this.width = 16
-        this.speed = movingObjectsSpeedAtStart;
-
-
-        // let x: number = canvas.width;
-
-        // let y: number = 300;
-
-        // let width: number = 16;
-
-        // let speed: number = wall1.speed;
-
-        this.moveCoin = () => {
-            if (gameState === 'START') {
-                this.x -= this.speed;
-            } if (this.x < 0 - this.width) {
-                this.x = 850;
-            } 
-                // if (((player.y < (this.y + 16)) && (player.y > this.y)) 
-                // && ((player.x > this.x) && (player.x < (this.x + 16)))) 
-                // if (player.x > this.x && player.x < this.x + 16 && player.y > this.y && player.y < this.y+16)
-
-                if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true))      // hotfix
-                // if (player.y > this.y && player.y < this.y + 16)
-                {
-                    highscore += 400;
-                    levelCounter += 400;
-                    this.x += 900;
-                }
-                
-
-            
-        };
-    }
-}
-
 
 
 
@@ -248,6 +200,8 @@ const speedUp = () => {
 
 // create obstacles and collectables
 
+let key1 = new keyClass();
+
 let wallDistance:number = 500;
 
 
@@ -256,7 +210,11 @@ let wall1 = new wallClass();
 let wall2 = new wallClass();
 
 // constructor args: x, y, initialSpeed
-let coin1 = new collectableClass(900, 270, 8);
+let coin1 = new collectableClass(900, 270, movingObjectsSpeedAtStart);
+
+// let coin2 = new collectableClass(1000, 280, movingObjectsSpeedAtStart);
+// let coin3 = new collectableClass(1300, 290, movingObjectsSpeedAtStart);
+
 
 
 wall2.x = wall1.x + wallDistance;
