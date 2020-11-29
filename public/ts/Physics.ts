@@ -25,9 +25,9 @@ const moveAll = () => {
         key1.moveKey();
         wall1.collision();
         // wall2.collision();
-        coin1.moveCoin();
-        // coin2.moveCoin();
-        // coin3.moveCoin();
+        coin1.move();
+        // coin2.move();
+        // coin3.move();
 
         gravity();
         speedUp();
@@ -223,14 +223,6 @@ class coinClass {
 
 
 
-// let coin2 = new coinClass();
-// coin2.x = 1000;
-// coin2.y = 280;
-
-// let coin3 = new coinClass();
-// coin3.x = 1300;
-// coin3.y = 290;
-
 
 const speedUp = () => {
     if (highscore >= 400) {
@@ -263,10 +255,9 @@ let wallDistance:number = 500;
 let wall1 = new wallClass();
 let wall2 = new wallClass();
 
-let coin1 = new coinClass();
+// constructor args: x, y, initialSpeed
+let coin1 = new collectableClass(900, 270, 8);
 
-coin1.x = 900;
-coin1.y = 270;
 
 wall2.x = wall1.x + wallDistance;
 wall2.height = 130;

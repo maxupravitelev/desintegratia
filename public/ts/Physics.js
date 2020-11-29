@@ -12,7 +12,7 @@ const moveAll = () => {
     if (gameState == 'START') {
         key1.moveKey();
         wall1.collision();
-        coin1.moveCoin();
+        coin1.move();
         gravity();
         speedUp();
         highscore++;
@@ -153,9 +153,7 @@ const speedUp = () => {
 let wallDistance = 500;
 let wall1 = new wallClass();
 let wall2 = new wallClass();
-let coin1 = new coinClass();
-coin1.x = 900;
-coin1.y = 270;
+let coin1 = new collectableClass(900, 270, 8);
 wall2.x = wall1.x + wallDistance;
 wall2.height = 130;
 wall2.y = groundY - wall2.height;

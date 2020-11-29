@@ -1,10 +1,10 @@
-class coinClass {
-    constructor() {
-        this.x = canvas.width;
-        this.y = 300;
+class collectableClass {
+    constructor(x, y, speed) {
+        this.x = x;
+        this.y = y;
         this.width = 16;
-        this.speed = movingObjectsSpeedAtStart;
-        this.moveCoin = () => {
+        this.speed = speed;
+        this.move = () => {
             if (gameState === 'START') {
                 this.x -= this.speed;
             }
