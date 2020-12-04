@@ -129,10 +129,7 @@ const speedUp = () => {
     }
 };
 let key1 = new keyClass();
-let wallDistance = 500;
-let wall1 = new wallClass();
-let wall2 = new wallClass();
 let coin1 = new collectableClass(900, 270, movingObjectsSpeedAtStart);
-wall2.x = wall1.x + wallDistance;
-wall2.height = 130;
-wall2.y = groundY - wall2.height;
+let wallDistance = 500;
+let wall1 = new obstacleClass(700, 0, movingObjectsSpeedAtStart);
+let wall2 = new obstacleClass(wall1.x + wallDistance, -30, movingObjectsSpeedAtStart);

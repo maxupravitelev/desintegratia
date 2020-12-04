@@ -1,9 +1,9 @@
 class obstacleClass {
-    constructor() {
+    constructor(x, y_offset, speed) {
         this.x = 700;
         this.height = 160;
         this.width = 55;
-        this.y = groundY - this.height;
+        this.y = y_offset + groundY - this.height;
         this.speed = movingObjectsSpeedAtStart;
         this.collision = function () {
             if (this.x <= player.x + frame_width / 2 - 15 && player.jumping == false) {
@@ -15,17 +15,17 @@ class obstacleClass {
                 }
                 else {
                     if (gameState == 'START') {
-                        this.moveWall();
+                        this.moveObstacle();
                     }
                 }
             }
             else {
                 if (gameState == 'START') {
-                    this.moveWall();
+                    this.moveObstacle();
                 }
             }
         };
-        this.moveWall = () => {
+        this.moveObstacle = () => {
             if (this.x >= 0 - this.width) {
                 this.x -= this.speed * speedFactor;
             }

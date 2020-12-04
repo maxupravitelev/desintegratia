@@ -5,13 +5,13 @@ class obstacleClass {
     public width: number;
     public speed: number;
     public collision: any;
-    public moveWall: any;
+    public moveObstacle: any;
     
-    constructor() {
+    constructor(x:number, y_offset:number, speed:number) {
         this.x = 700;
         this.height = 160;
         this.width = 55;
-        this.y = groundY - this.height;
+        this.y = y_offset + groundY - this.height;
         this.speed = movingObjectsSpeedAtStart;
 
         this.collision = function () {
@@ -26,18 +26,18 @@ class obstacleClass {
                 }
                 else {
                     if (gameState == 'START') {
-                        this.moveWall();
+                        this.moveObstacle();
                     }
                 }
             }
             else {
                 if (gameState == 'START') {
-                    this.moveWall();
+                    this.moveObstacle();
                 }
             }
         };
 
-        this.moveWall = () => {
+        this.moveObstacle = () => {
             if (this.x >= 0 - this.width) {
                 this.x -= this.speed * speedFactor;
 

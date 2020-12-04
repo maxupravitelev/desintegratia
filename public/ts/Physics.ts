@@ -189,19 +189,16 @@ const speedUp = () => {
 
 let key1 = new keyClass();
 
-let wallDistance:number = 500;
-
-let wall1 = new wallClass();
-let wall2 = new wallClass();
 
 // constructor args: x, y, initialSpeed
 let coin1 = new collectableClass(900, 270, movingObjectsSpeedAtStart);
 
+
+let wallDistance:number = 500;
+
+let wall1 = new obstacleClass(700, 0, movingObjectsSpeedAtStart);
+let wall2 = new obstacleClass(wall1.x + wallDistance, -30, movingObjectsSpeedAtStart);
+
 // let coin2 = new collectableClass(1000, 280, movingObjectsSpeedAtStart);
 // let coin3 = new collectableClass(1300, 290, movingObjectsSpeedAtStart);
 
-
-
-wall2.x = wall1.x + wallDistance;
-wall2.height = 130;
-wall2.y = groundY - wall2.height;
