@@ -27,10 +27,7 @@ class collectableClass {
                     highscore += 400;
                     levelCounter += 400;
                     this.x += 900;
-                }
-                
-
-            
+                }   
         };
     }
 }
