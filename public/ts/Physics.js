@@ -28,67 +28,6 @@ const moveAll = () => {
         endY <= canvas.height / 4 ? (endY += 5) : (endY += 0);
     }
 };
-class wallClass {
-    constructor() {
-        this.x = 700;
-        this.height = 160;
-        this.width = 55;
-        this.y = groundY - this.height;
-        this.speed = movingObjectsSpeedAtStart;
-        this.collision = function () {
-            if (this.x <= player.x + frame_width / 2 - 15 && player.jumping == false) {
-                if (player.x <= this.x) {
-                    this.speed = 0;
-                    highscore += 0;
-                    gameState = 'GAME_OVER';
-                    highscoreCount();
-                }
-                else {
-                    if (gameState == 'START') {
-                        this.moveWall();
-                    }
-                }
-            }
-            else {
-                if (gameState == 'START') {
-                    this.moveWall();
-                }
-            }
-        };
-        this.moveWall = () => {
-            if (this.x >= 0 - this.width) {
-                this.x -= this.speed * speedFactor;
-            }
-            else {
-                this.x = canvas.width + Math.random() * 100;
-                this.y = groundY - this.height + Math.random() * 60;
-            }
-        };
-    }
-}
-let player = {
-    jumping: true,
-    x: 50,
-    x_velocity: 0,
-    y: 0,
-    y_velocity: 0
-};
-const jump = () => {
-    if (gameState === 'START' && player.jumping == false) {
-        player.y_velocity -= 60;
-        player.jumping = true;
-    }
-};
-const gravity = () => {
-    player.y_velocity += 2;
-    player.y += player.y_velocity;
-    player.y_velocity *= 0.9;
-    if (player.y > groundY - frame_height / 2) {
-        player.jumping = false;
-        player.y = groundY - frame_height / 2;
-        player.y_velocity = 0;
-    }
-};
 const speedUp = () => {
     if (highscore >= 400) {
         speedFactor = 1.2;
