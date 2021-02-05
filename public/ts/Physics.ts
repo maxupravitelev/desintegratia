@@ -65,7 +65,6 @@ const speedUp = () => {
 
 
 // create obstacles and collectables
-
 let key1 = new keyClass();
 
 

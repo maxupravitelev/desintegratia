@@ -11,7 +11,9 @@ class collectableClass {
             if (this.x < 0 - this.width) {
                 this.x = 850;
             }
-            if ((player.x > this.x && player.x < this.x + 16) && (player.jumping == true)) {
+            if (player.x > this.x &&
+                player.x < this.x + 16 &&
+                player.jumping == true) {
                 highscore += 400;
                 levelCounter += 400;
                 this.x += 900;

@@ -1,8 +1,7 @@
 let highscore = 0;
 let thisHighscore = 0;
 let bestHighScore = 0;
-let baseUrl = "https://desintegratia.herokuapp.com/api/scores";
-let url = baseUrl;
+let baseUrl = '/api/scores';
 let globalScores = {};
 const highscoreCount = () => {
     if (highscore >= globalScores[2].score) {
@@ -11,7 +10,7 @@ const highscoreCount = () => {
     }
 };
 const getHighscoresFromBackend = async () => {
-    const response = await (fetch(url));
+    const response = await fetch(baseUrl);
     const scores = await response.json();
     scores.sort((b, a) => a.score - b.score);
     globalScores = scores;
@@ -21,21 +20,21 @@ const getHighscoresFromBackend = async () => {
     }
 };
 const postHighscore = async (data) => {
-    let playerName = prompt("Please enter your name");
+    let playerName = prompt('Please enter your name');
     if (!playerName) {
         playerName = 'Lorempsa Ipsus';
     }
-    let postUrl = baseUrl + "/new-score";
+    let postUrl = baseUrl + '/new-score';
     let scoresObj = {
-        'score': data,
-        playerName
+        score: data,
+        playerName,
     };
     const response = await fetch(postUrl, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(scoresObj)
+        body: JSON.stringify(scoresObj),
     });
     getHighscoresFromBackend();
 };

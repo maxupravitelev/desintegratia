@@ -6,7 +6,8 @@ class obstacleClass {
         this.y = y_offset + groundY - this.height;
         this.speed = movingObjectsSpeedAtStart;
         this.collision = function () {
-            if (this.x <= player.x + frame_width / 2 - 15 && player.jumping == false) {
+            if (this.x <= player.x + frame_width / 2 - 15 &&
+                player.jumping == false) {
                 if (player.x <= this.x) {
                     this.speed = 0;
                     highscore += 0;

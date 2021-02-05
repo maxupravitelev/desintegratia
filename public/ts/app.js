@@ -1,13 +1,13 @@
 let animationCounter = 0;
 let frame_width = 400;
 let frame_height = 450;
+let currentPlayerSprite;
 let coinAnimationCounter = 0;
 let coin_frame_width = 24;
 let coin_frame_height = 24;
-let canvas = document.getElementById("gameCanvas");
-let canvasContext = canvas.getContext("2d");
+let canvas = document.getElementById('gameCanvas');
+let canvasContext = canvas.getContext('2d');
 let gameState = 'INIT';
-let currentPlayerSprite;
 const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = 896;
@@ -15,13 +15,13 @@ const resizeCanvas = () => {
 window.onload = () => {
     getHighscoresFromBackend();
 };
-var currentTime = 0;
-var deltaTime = 0;
-var pastTime = (new Date()).getTime();
-var framesPerSecond = 1 / 60;
+let currentTime = 0;
+let deltaTime = 0;
+let pastTime = new Date().getTime();
+let framesPerSecond = 1 / 60;
 const gameloop = () => {
     if (!(gameState === 'INIT')) {
-        currentTime = (new Date()).getTime();
+        currentTime = new Date().getTime();
         deltaTime = deltaTime + Math.min(1, (currentTime - pastTime) / 1000);
         while (deltaTime > framesPerSecond) {
             deltaTime = deltaTime - framesPerSecond;
@@ -37,21 +37,21 @@ const gameloop = () => {
     else {
         canvasContext.drawImage(startScreen, 0, 0);
         const startGame = () => {
-            document.removeEventListener("touchstart", startGame);
-            document.removeEventListener("mousedown", startGame);
-            document.removeEventListener("keydown", startGame);
-            pastTime = (new Date()).getTime();
+            document.removeEventListener('touchstart', startGame);
+            document.removeEventListener('mousedown', startGame);
+            document.removeEventListener('keydown', startGame);
+            pastTime = new Date().getTime();
             gameState = 'START';
             window.requestAnimationFrame(animate);
         };
-        document.addEventListener("touchstart", startGame);
-        document.addEventListener("keydown", startGame);
-        document.addEventListener("mousedown", startGame);
+        document.addEventListener('touchstart', startGame);
+        document.addEventListener('keydown', startGame);
+        document.addEventListener('mousedown', startGame);
         requestAnimationFrame(gameloop);
     }
 };
-document.getElementById("startFullscreen").addEventListener("click", () => {
-    let gameCanvas = document.getElementById("gameCanvas");
+document.getElementById('startFullscreen').addEventListener('click', () => {
+    let gameCanvas = document.getElementById('gameCanvas');
     if (gameCanvas.requestFullscreen) {
         gameCanvas.requestFullscreen();
     }
@@ -71,7 +71,7 @@ const imageLoadingDoneSoStartGame = () => {
 };
 const keyPressed = (evt) => {
     if (evt.keyCode == 32) {
-        (gameState === 'GAME_OVER') ? reset() : jump();
+        gameState === 'GAME_OVER' ? reset() : jump();
     }
 };
 const animate = () => {
@@ -84,7 +84,7 @@ const animate = () => {
     if (gameState === 'GAME_OVER') {
         frame = Math.floor(animationCounter % 1);
     }
-    if (key1.x <= (keyStopX - 10)) {
+    if (key1.x <= keyStopX - 10) {
         currentPlayerSprite = playerAngrySprite;
     }
     canvasContext.drawImage(currentPlayerSprite, frame * frame_width, 0, frame_width, frame_height, player.x, player.y + 26, frame_width / 2, frame_height / 2);
@@ -110,13 +110,13 @@ const reset = () => {
 };
 const inputHandling = () => {
     if (gameState === 'START') {
-        document.addEventListener("keydown", keyPressed);
-        document.removeEventListener("mousedown", reset);
-        document.addEventListener("mousedown", jump);
-        document.addEventListener("touchstart", jump);
+        document.addEventListener('keydown', keyPressed);
+        document.removeEventListener('mousedown', reset);
+        document.addEventListener('mousedown', jump);
+        document.addEventListener('touchstart', jump);
     }
     if (gameState === 'GAME_OVER') {
-        document.removeEventListener("mousedown", jump);
-        document.addEventListener("mousedown", reset);
+        document.removeEventListener('mousedown', jump);
+        document.addEventListener('mousedown', reset);
     }
 };

@@ -1,6 +1,7 @@
+// Built upon  "How To Program Games"-Course by Chris DeLeon: https://www.udemy.com/course/how-to-program-games/learn/lecture/3440374
+
 let playerSprite = new Image();
 let playerAngrySprite = new Image();
-
 let ground = new Image();
 let end = new Image();
 let ground_stripe = new Image();
@@ -37,8 +38,6 @@ const loadImages = () => {
         { varName: key, theFile: "image/key.png" },
         { varName: wall_sprite, theFile: "image/wall.png" },
         { varName: coin_sprite, theFile: "image/all_coins.png" }
-        
-
     ];
 
     picsToLoad = imageList.length;
